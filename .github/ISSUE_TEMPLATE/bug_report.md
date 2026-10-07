@@ -2,15 +2,10 @@
 name: Bug report
 about: Create a report to help us improve
 title: ''
-labels: ''
+labels: bug
 assignees: ''
+type: Bug
 
----
-
----
-name: Bug Report
-title: "[BUG]: "
-labels: ["type: bug", "status: new"]
 ---
 
 ## Mô tả lỗi
