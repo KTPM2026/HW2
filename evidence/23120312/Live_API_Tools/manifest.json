@@ -1,0 +1,117 @@
+[
+  {
+    "path": "evidence/23120312/Live_API_Tools/BUG-FR02-01_01_counter_before.png",
+    "sha256": "2a90d30f31ff0aa867c75febbfb23a4d4fa3f7f1dbf739a78ac624d9f8911e55",
+    "bytes": 31003
+  },
+  {
+    "path": "evidence/23120312/Live_API_Tools/BUG-FR02-01_02_first_wrong_password.png",
+    "sha256": "0b92b2911d288fb7ae28d90c503756e03f7f32409726c7f96dae63a7f014fa2c",
+    "bytes": 85060
+  },
+  {
+    "path": "evidence/23120312/Live_API_Tools/BUG-FR02-01_03_counter_after_one_failure.png",
+    "sha256": "7a144048df110f4979f111a74bff1d6dbcaf471612b7e597d69351a6a7064403",
+    "bytes": 30996
+  },
+  {
+    "path": "evidence/23120312/Live_API_Tools/BUG-FR02-01_05_correct_password_after_two_failures.png",
+    "sha256": "321669b5dd8038652d5be35e0c4c56208c85212fdca775e568222b2d5d3b1e05",
+    "bytes": 86011
+  },
+  {
+    "path": "evidence/23120312/Live_API_Tools/BUG-FR02-01_06_premature_lock.png",
+    "sha256": "cc84be6588c558fb41e328f85136e5bbe3bb7192ed1c56d08bb4e90f81e035a0",
+    "bytes": 31427
+  },
+  {
+    "path": "evidence/23120312/Live_API_Tools/BUG-FR02-02_01_lock_request_2.png",
+    "sha256": "551408899bd5048dcf9c811bc2dd0f9072a8f44acb307645027bc36e0b95360a",
+    "bytes": 83071
+  },
+  {
+    "path": "evidence/23120312/Live_API_Tools/BUG-FR02-02_02_lock_duration_sql.png",
+    "sha256": "37605f18ed652801bd9efd9abf07f033fdf110236227094808c30da9e1844fe2",
+    "bytes": 41471
+  },
+  {
+    "path": "evidence/23120312/Live_API_Tools/BUG-FR08-01_01_cart_precondition.png",
+    "sha256": "cdb1a43624046b6ec8ef0b1b9fd108cf8f486fbcc219c394bb3534acaa096b3e",
+    "bytes": 73592
+  },
+  {
+    "path": "evidence/23120312/Live_API_Tools/BUG-FR08-01_02_forged_total_one.png",
+    "sha256": "de7dd151eac3da66646f0fb595094e93fe8fa8ada06b58e76c8e670edca18008",
+    "bytes": 83103
+  },
+  {
+    "path": "evidence/23120312/Live_API_Tools/BUG-FR08-01_03_negative_total.png",
+    "sha256": "33ac86936ac3259b6599adcb4db5dd2e2ad9236b76d7cbf0877ae4566355f146",
+    "bytes": 82667
+  },
+  {
+    "path": "evidence/23120312/Live_API_Tools/BUG-FR08-01_04_stored_order_totals.png",
+    "sha256": "5018ff511ae873c98579866a666983b54b1072a0d58fde70cb862b3919741153",
+    "bytes": 32608
+  },
+  {
+    "path": "evidence/23120312/Live_API_Tools/BUG-FR08-02_01_successful_checkout.png",
+    "sha256": "a7b27202727e234e77723b738a816b467ddc4f7c8f2e887c394cbd9d86cd3139",
+    "bytes": 84642
+  },
+  {
+    "path": "evidence/23120312/Live_API_Tools/BUG-FR08-02_02_cart_after_success.png",
+    "sha256": "55ac3c88e6b6f4eceb1f55e7003504d330017a0fccaa3dd65bff7af93ab22573",
+    "bytes": 74215
+  },
+  {
+    "path": "evidence/23120312/Live_API_Tools/BUG-FR19-01_01_caller_role_user.png",
+    "sha256": "7017face17f89e5826bd0b480b5c870b422547d3caaebf33c18177051758e98c",
+    "bytes": 29001
+  },
+  {
+    "path": "evidence/23120312/Live_API_Tools/BUG-FR19-01_02_user_reads_admin_list.png",
+    "sha256": "ac9b1c4361f61cac4b55a4e59d839db4355cc635dcb03e89f35a635d26b9f16d",
+    "bytes": 94224
+  },
+  {
+    "path": "evidence/23120312/Live_API_Tools/BUG-FR19-02_01_caller_and_target_before.png",
+    "sha256": "b8b494ab407d56a91e24581bcf255ca712803bb0ab00bbcff8f337d3b3a49976",
+    "bytes": 37658
+  },
+  {
+    "path": "evidence/23120312/Live_API_Tools/BUG-FR19-02_02_user_deletes_other_user.png",
+    "sha256": "502417c1b83373720ce78c723d62efe8a93607f51ee811152aacbb7b8fe19914",
+    "bytes": 73329
+  },
+  {
+    "path": "evidence/23120312/Live_API_Tools/BUG-FR19-02_03_target_deleted_in_sqlite.png",
+    "sha256": "5727b6b49c824261513ba876a121654f6d0855e19d7844308c3860c5987977fc",
+    "bytes": 35097
+  },
+  {
+    "path": "evidence/23120312/Live_API_Tools/BUG-FR19-03_01_signed_in_admin_before.png",
+    "sha256": "91f0582a2f5533697375758c414ea080b9f3e8bb8b04a64f3d0551464fc8c5ea",
+    "bytes": 26925
+  },
+  {
+    "path": "evidence/23120312/Live_API_Tools/BUG-FR19-03_02_admin_self_delete.png",
+    "sha256": "5cb730919ad1955590e2daccdb2ec7fc5b0fcee91978cc9d0b3fb60e601c9461",
+    "bytes": 73624
+  },
+  {
+    "path": "evidence/23120312/Live_API_Tools/BUG-FR19-03_03_admin_deleted_in_sqlite.png",
+    "sha256": "59fa27c535b3fa237624f90ec35129a02783f55b7203066235f80d629d1e2635",
+    "bytes": 28889
+  },
+  {
+    "path": "evidence/23120312/Live_API_Tools/Live_Tool_Reproduction.json",
+    "sha256": "900d14ddbc441126b91da90a99b201fb7bbb07942e638e3f79ade37d4070afa4",
+    "bytes": 39035
+  },
+  {
+    "path": "evidence/23120312/Live_API_Tools/Live_Tool_Environment.json",
+    "sha256": "3f256ab58c7e0a54ae90f49ada275ddd5406dedc5cec3a59ade5930fbd1a20fa",
+    "bytes": 882
+  }
+]

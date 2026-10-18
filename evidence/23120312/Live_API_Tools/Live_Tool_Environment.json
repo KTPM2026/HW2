@@ -1,0 +1,24 @@
+{
+  "sourceRevision": "85af3ba875c88283615e22cb108f13e2fccaf0e9",
+  "sourceSha256": {
+    "server.js": "47573ce5a6bf9a894748d2bb56cc8d1659ad7acd033fdd6db6b3e4d9473eb487",
+    "database.js": "3366420632bb9c982905b22e3969f69515e39e7a37a4f84eba56ead7e94afed8",
+    "package.json": "2e536b8fc5009439e9235cf5867ea7a35b8a6e867a94b6738db6938f8d3ebd88",
+    "package-lock.json": "ec3f3b2dbf1622f1b1121b9d5916ab0eb74d06ed8c59b16082c52c452eebd814"
+  },
+  "runtimeChanges": [
+    "Backend port 3000 -> 38313",
+    "Listen on loopback only"
+  ],
+  "protectedDatabasesUnchanged": true,
+  "tools": {
+    "Swagger UI": "5.33.3",
+    "Playwright": "1.64.1",
+    "Datasette": "0.65.5"
+  },
+  "backendUrl": "http://127.0.0.1:38313",
+  "swaggerUrl": "http://127.0.0.1:38314",
+  "datasetteUrl": "http://127.0.0.1:38315",
+  "responseMocking": false,
+  "screenshotEditing": false
+}

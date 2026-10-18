@@ -1,0 +1,1202 @@
+{
+  "startedAt": "2026-10-18T03:47:52.743Z",
+  "sourceCommit": "85af3ba875c88283615e22cb108f13e2fccaf0e9",
+  "tools": {
+    "swagger": "5.33.3",
+    "playwright": "1.64.1",
+    "datasette": "Recorded in Live_Tool_Environment.json"
+  },
+  "notes": [
+    "Requests executed in Swagger UI; no request/response mocking.",
+    "SQL executed in Datasette against a new isolated database.",
+    "Generated cURL preview is hidden in the Swagger UI CSS to keep Bearer tokens out of public screenshots. Actual URL, status and response body are unchanged.",
+    "Original 14 October test matrix is retained; these are supplemental 18 October reproductions."
+  ],
+  "requests": [
+    {
+      "tool": "fixture setup via HTTP",
+      "timestamp": "2026-10-18T03:47:52.958Z",
+      "method": "POST",
+      "url": "http://127.0.0.1:38313/api/register",
+      "authenticated": false,
+      "request": {
+        "name": "Sandbox counter",
+        "email": "nhu-counter-20261018034752@example.test",
+        "password": "[omitted test credential]"
+      },
+      "status": 200,
+      "response": {
+        "message": "User registered successfully",
+        "id": 4
+      }
+    },
+    {
+      "tool": "fixture setup via HTTP",
+      "timestamp": "2026-10-18T03:47:52.967Z",
+      "method": "POST",
+      "url": "http://127.0.0.1:38313/api/login",
+      "authenticated": false,
+      "request": {
+        "email": "nhu-counter-20261018034752@example.test",
+        "password": "[omitted test credential]"
+      },
+      "status": 200,
+      "response": {
+        "message": "Login successful",
+        "token": "[omitted test credential]",
+        "user": {
+          "id": 4,
+          "name": "Sandbox counter",
+          "email": "nhu-counter-20261018034752@example.test",
+          "password": "[omitted test credential]",
+          "role": "user",
+          "login_attempts": 0,
+          "locked_until": null,
+          "reset_token": null,
+          "shipping_address": null,
+          "phone": null
+        }
+      }
+    },
+    {
+      "tool": "Swagger UI Execute",
+      "bug": "BUG-FR02-01",
+      "label": "02_first_wrong_password",
+      "timestamp": "2026-10-18T03:47:54.170Z",
+      "method": "POST",
+      "url": "http://127.0.0.1:38313/api/login",
+      "authenticated": false,
+      "request": {
+        "email": "nhu-counter-20261018034752@example.test",
+        "password": "[omitted test credential]"
+      },
+      "status": 401,
+      "response": {
+        "error": "Invalid email or password"
+      }
+    },
+    {
+      "tool": "Swagger UI Execute",
+      "bug": "BUG-FR02-01",
+      "label": "04_second_wrong_password",
+      "timestamp": "2026-10-18T03:47:55.397Z",
+      "method": "POST",
+      "url": "http://127.0.0.1:38313/api/login",
+      "authenticated": false,
+      "request": {
+        "email": "nhu-counter-20261018034752@example.test",
+        "password": "[omitted test credential]"
+      },
+      "status": 401,
+      "response": {
+        "error": "Invalid email or password"
+      }
+    },
+    {
+      "tool": "Swagger UI Execute",
+      "bug": "BUG-FR02-01",
+      "label": "05_correct_password_after_two_failures",
+      "timestamp": "2026-10-18T03:47:55.983Z",
+      "method": "POST",
+      "url": "http://127.0.0.1:38313/api/login",
+      "authenticated": false,
+      "request": {
+        "email": "nhu-counter-20261018034752@example.test",
+        "password": "[omitted test credential]"
+      },
+      "status": 403,
+      "response": {
+        "error": "Tài khoản đã bị khóa. Vui lòng thử lại sau."
+      }
+    },
+    {
+      "tool": "fixture setup via HTTP",
+      "timestamp": "2026-10-18T03:47:56.484Z",
+      "method": "POST",
+      "url": "http://127.0.0.1:38313/api/register",
+      "authenticated": false,
+      "request": {
+        "name": "Sandbox duration",
+        "email": "nhu-duration-20261018034752@example.test",
+        "password": "[omitted test credential]"
+      },
+      "status": 200,
+      "response": {
+        "message": "User registered successfully",
+        "id": 5
+      }
+    },
+    {
+      "tool": "fixture setup via HTTP",
+      "timestamp": "2026-10-18T03:47:56.490Z",
+      "method": "POST",
+      "url": "http://127.0.0.1:38313/api/login",
+      "authenticated": false,
+      "request": {
+        "email": "nhu-duration-20261018034752@example.test",
+        "password": "[omitted test credential]"
+      },
+      "status": 200,
+      "response": {
+        "message": "Login successful",
+        "token": "[omitted test credential]",
+        "user": {
+          "id": 5,
+          "name": "Sandbox duration",
+          "email": "nhu-duration-20261018034752@example.test",
+          "password": "[omitted test credential]",
+          "role": "user",
+          "login_attempts": 0,
+          "locked_until": null,
+          "reset_token": null,
+          "shipping_address": null,
+          "phone": null
+        }
+      }
+    },
+    {
+      "tool": "Swagger UI Execute",
+      "bug": "BUG-FR02-02",
+      "label": "01_lock_request_1",
+      "timestamp": "2026-10-18T03:47:57.126Z",
+      "method": "POST",
+      "url": "http://127.0.0.1:38313/api/login",
+      "authenticated": false,
+      "request": {
+        "email": "nhu-duration-20261018034752@example.test",
+        "password": "[omitted test credential]"
+      },
+      "status": 401,
+      "response": {
+        "error": "Invalid email or password"
+      }
+    },
+    {
+      "tool": "Swagger UI Execute",
+      "bug": "BUG-FR02-02",
+      "label": "01_lock_request_2",
+      "timestamp": "2026-10-18T03:47:57.760Z",
+      "method": "POST",
+      "url": "http://127.0.0.1:38313/api/login",
+      "authenticated": false,
+      "request": {
+        "email": "nhu-duration-20261018034752@example.test",
+        "password": "[omitted test credential]"
+      },
+      "status": 401,
+      "response": {
+        "error": "Invalid email or password"
+      }
+    },
+    {
+      "tool": "fixture setup via HTTP",
+      "timestamp": "2026-10-18T03:47:58.295Z",
+      "method": "GET",
+      "url": "http://127.0.0.1:38313/api/products",
+      "authenticated": false,
+      "status": 200,
+      "response": [
+        {
+          "id": 1,
+          "name": "iPhone 15 Pro Max",
+          "price": 30000000,
+          "description": "Điện thoại cao cấp của Apple",
+          "imageUrl": "https://placehold.co/300x300/png?text=iPhone+15",
+          "category_id": 1
+        },
+        {
+          "id": 2,
+          "name": "Samsung Galaxy S24 Ultra",
+          "price": 28000000,
+          "description": "Màn hình hiển thị xuất sắc, camera siêu zoom",
+          "imageUrl": "https://placehold.co/300x300/png?text=Samsung+S24",
+          "category_id": 1
+        },
+        {
+          "id": 3,
+          "name": "MacBook Pro M3",
+          "price": 45000000,
+          "description": "Laptop chuyên nghiệp mạnh mẽ",
+          "imageUrl": "https://placehold.co/300x300/png?text=Macbook+Pro",
+          "category_id": 2
+        },
+        {
+          "id": 4,
+          "name": "Tai nghe AirPods Pro 2",
+          "price": 6000000,
+          "description": "Chống ồn chủ động xuất sắc",
+          "imageUrl": "https://placehold.co/300x300/png?text=AirPods+Pro",
+          "category_id": 3
+        },
+        {
+          "id": 5,
+          "name": "Bàn phím cơ Keychron Q1",
+          "price": 4000000,
+          "description": "Gõ cực sướng, thiết kế kim loại",
+          "imageUrl": "https://placehold.co/300x300/png?text=Keychron+Q1",
+          "category_id": 3
+        }
+      ]
+    },
+    {
+      "tool": "fixture setup via HTTP",
+      "timestamp": "2026-10-18T03:47:58.303Z",
+      "method": "POST",
+      "url": "http://127.0.0.1:38313/api/register",
+      "authenticated": false,
+      "request": {
+        "name": "Sandbox tamper",
+        "email": "nhu-tamper-20261018034752@example.test",
+        "password": "[omitted test credential]"
+      },
+      "status": 200,
+      "response": {
+        "message": "User registered successfully",
+        "id": 6
+      }
+    },
+    {
+      "tool": "fixture setup via HTTP",
+      "timestamp": "2026-10-18T03:47:58.308Z",
+      "method": "POST",
+      "url": "http://127.0.0.1:38313/api/login",
+      "authenticated": false,
+      "request": {
+        "email": "nhu-tamper-20261018034752@example.test",
+        "password": "[omitted test credential]"
+      },
+      "status": 200,
+      "response": {
+        "message": "Login successful",
+        "token": "[omitted test credential]",
+        "user": {
+          "id": 6,
+          "name": "Sandbox tamper",
+          "email": "nhu-tamper-20261018034752@example.test",
+          "password": "[omitted test credential]",
+          "role": "user",
+          "login_attempts": 0,
+          "locked_until": null,
+          "reset_token": null,
+          "shipping_address": null,
+          "phone": null
+        }
+      }
+    },
+    {
+      "tool": "fixture setup via HTTP",
+      "timestamp": "2026-10-18T03:47:58.314Z",
+      "method": "POST",
+      "url": "http://127.0.0.1:38313/api/cart",
+      "authenticated": true,
+      "request": {
+        "id": 1,
+        "name": "iPhone 15 Pro Max",
+        "price": 30000000,
+        "quantity": 2
+      },
+      "status": 200,
+      "response": {
+        "message": "Added to cart"
+      }
+    },
+    {
+      "tool": "Swagger UI Execute",
+      "bug": "BUG-FR08-01",
+      "label": "01_cart_precondition",
+      "timestamp": "2026-10-18T03:47:58.893Z",
+      "method": "GET",
+      "url": "http://127.0.0.1:38313/api/cart",
+      "authenticated": true,
+      "status": 200,
+      "response": [
+        {
+          "id": 1,
+          "name": "iPhone 15 Pro Max",
+          "price": 30000000,
+          "quantity": 2
+        }
+      ]
+    },
+    {
+      "tool": "Swagger UI Execute",
+      "bug": "BUG-FR08-01",
+      "label": "02_forged_total_one",
+      "timestamp": "2026-10-18T03:47:59.696Z",
+      "method": "POST",
+      "url": "http://127.0.0.1:38313/api/checkout",
+      "authenticated": true,
+      "request": {
+        "total_amount": 1,
+        "shipping_address": "Sandbox test address"
+      },
+      "status": 200,
+      "response": {
+        "message": "Checkout successful",
+        "orderId": 1
+      }
+    },
+    {
+      "tool": "Swagger UI Execute",
+      "bug": "BUG-FR08-01",
+      "label": "03_negative_total",
+      "timestamp": "2026-10-18T03:48:00.539Z",
+      "method": "POST",
+      "url": "http://127.0.0.1:38313/api/checkout",
+      "authenticated": true,
+      "request": {
+        "total_amount": -1,
+        "shipping_address": "Sandbox test address"
+      },
+      "status": 200,
+      "response": {
+        "message": "Checkout successful",
+        "orderId": 2
+      }
+    },
+    {
+      "tool": "fixture setup via HTTP",
+      "timestamp": "2026-10-18T03:48:01.034Z",
+      "method": "POST",
+      "url": "http://127.0.0.1:38313/api/register",
+      "authenticated": false,
+      "request": {
+        "name": "Sandbox cart-clear",
+        "email": "nhu-cart-clear-20261018034752@example.test",
+        "password": "[omitted test credential]"
+      },
+      "status": 200,
+      "response": {
+        "message": "User registered successfully",
+        "id": 7
+      }
+    },
+    {
+      "tool": "fixture setup via HTTP",
+      "timestamp": "2026-10-18T03:48:01.039Z",
+      "method": "POST",
+      "url": "http://127.0.0.1:38313/api/login",
+      "authenticated": false,
+      "request": {
+        "email": "nhu-cart-clear-20261018034752@example.test",
+        "password": "[omitted test credential]"
+      },
+      "status": 200,
+      "response": {
+        "message": "Login successful",
+        "token": "[omitted test credential]",
+        "user": {
+          "id": 7,
+          "name": "Sandbox cart-clear",
+          "email": "nhu-cart-clear-20261018034752@example.test",
+          "password": "[omitted test credential]",
+          "role": "user",
+          "login_attempts": 0,
+          "locked_until": null,
+          "reset_token": null,
+          "shipping_address": null,
+          "phone": null
+        }
+      }
+    },
+    {
+      "tool": "fixture setup via HTTP",
+      "timestamp": "2026-10-18T03:48:01.043Z",
+      "method": "POST",
+      "url": "http://127.0.0.1:38313/api/cart",
+      "authenticated": true,
+      "request": {
+        "id": 1,
+        "name": "iPhone 15 Pro Max",
+        "price": 30000000,
+        "quantity": 1
+      },
+      "status": 200,
+      "response": {
+        "message": "Added to cart"
+      }
+    },
+    {
+      "tool": "Swagger UI Execute",
+      "bug": "BUG-FR08-02",
+      "label": "01_successful_checkout",
+      "timestamp": "2026-10-18T03:48:01.661Z",
+      "method": "POST",
+      "url": "http://127.0.0.1:38313/api/checkout",
+      "authenticated": true,
+      "request": {
+        "total_amount": 30000000,
+        "shipping_address": "Sandbox test address"
+      },
+      "status": 200,
+      "response": {
+        "message": "Checkout successful",
+        "orderId": 3
+      }
+    },
+    {
+      "tool": "Swagger UI Execute",
+      "bug": "BUG-FR08-02",
+      "label": "02_cart_after_success",
+      "timestamp": "2026-10-18T03:48:02.386Z",
+      "method": "GET",
+      "url": "http://127.0.0.1:38313/api/cart",
+      "authenticated": true,
+      "status": 200,
+      "response": [
+        {
+          "id": 1,
+          "name": "iPhone 15 Pro Max",
+          "price": 30000000,
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "tool": "fixture setup via HTTP",
+      "timestamp": "2026-10-18T03:48:02.515Z",
+      "method": "POST",
+      "url": "http://127.0.0.1:38313/api/register",
+      "authenticated": false,
+      "request": {
+        "name": "Sandbox ordinary-reader",
+        "email": "nhu-ordinary-reader-20261018034752@example.test",
+        "password": "[omitted test credential]"
+      },
+      "status": 200,
+      "response": {
+        "message": "User registered successfully",
+        "id": 8
+      }
+    },
+    {
+      "tool": "fixture setup via HTTP",
+      "timestamp": "2026-10-18T03:48:02.519Z",
+      "method": "POST",
+      "url": "http://127.0.0.1:38313/api/login",
+      "authenticated": false,
+      "request": {
+        "email": "nhu-ordinary-reader-20261018034752@example.test",
+        "password": "[omitted test credential]"
+      },
+      "status": 200,
+      "response": {
+        "message": "Login successful",
+        "token": "[omitted test credential]",
+        "user": {
+          "id": 8,
+          "name": "Sandbox ordinary-reader",
+          "email": "nhu-ordinary-reader-20261018034752@example.test",
+          "password": "[omitted test credential]",
+          "role": "user",
+          "login_attempts": 0,
+          "locked_until": null,
+          "reset_token": null,
+          "shipping_address": null,
+          "phone": null
+        }
+      }
+    },
+    {
+      "tool": "Swagger UI Execute",
+      "bug": "BUG-FR19-01",
+      "label": "02_user_reads_admin_list",
+      "timestamp": "2026-10-18T03:48:03.427Z",
+      "method": "GET",
+      "url": "http://127.0.0.1:38313/api/admin/users",
+      "authenticated": true,
+      "status": 200,
+      "response": [
+        {
+          "id": 1,
+          "name": "Admin User",
+          "email": "admin@eshop.com",
+          "role": "admin",
+          "login_attempts": 0,
+          "locked_until": null,
+          "shipping_address": null
+        },
+        {
+          "id": 2,
+          "name": "Test User",
+          "email": "test@eshop.com",
+          "role": "user",
+          "login_attempts": 0,
+          "locked_until": null,
+          "shipping_address": null
+        },
+        {
+          "id": 3,
+          "name": "Sandbox counter",
+          "email": "nhu-counter-20261018034738@example.test",
+          "role": "user",
+          "login_attempts": 2,
+          "locked_until": null,
+          "shipping_address": null
+        },
+        {
+          "id": 4,
+          "name": "Sandbox counter",
+          "email": "nhu-counter-20261018034752@example.test",
+          "role": "user",
+          "login_attempts": 4,
+          "locked_until": "2026-10-18T03:50:55.365Z",
+          "shipping_address": null
+        },
+        {
+          "id": 5,
+          "name": "Sandbox duration",
+          "email": "nhu-duration-20261018034752@example.test",
+          "role": "user",
+          "login_attempts": 4,
+          "locked_until": "2026-10-18T03:50:57.725Z",
+          "shipping_address": null
+        },
+        {
+          "id": 6,
+          "name": "Sandbox tamper",
+          "email": "nhu-tamper-20261018034752@example.test",
+          "role": "user",
+          "login_attempts": 0,
+          "locked_until": null,
+          "shipping_address": null
+        },
+        {
+          "id": 7,
+          "name": "Sandbox cart-clear",
+          "email": "nhu-cart-clear-20261018034752@example.test",
+          "role": "user",
+          "login_attempts": 0,
+          "locked_until": null,
+          "shipping_address": null
+        },
+        {
+          "id": 8,
+          "name": "Sandbox ordinary-reader",
+          "email": "nhu-ordinary-reader-20261018034752@example.test",
+          "role": "user",
+          "login_attempts": 0,
+          "locked_until": null,
+          "shipping_address": null
+        }
+      ]
+    },
+    {
+      "tool": "fixture setup via HTTP",
+      "timestamp": "2026-10-18T03:48:03.589Z",
+      "method": "POST",
+      "url": "http://127.0.0.1:38313/api/register",
+      "authenticated": false,
+      "request": {
+        "name": "Sandbox ordinary-deleter",
+        "email": "nhu-ordinary-deleter-20261018034752@example.test",
+        "password": "[omitted test credential]"
+      },
+      "status": 200,
+      "response": {
+        "message": "User registered successfully",
+        "id": 9
+      }
+    },
+    {
+      "tool": "fixture setup via HTTP",
+      "timestamp": "2026-10-18T03:48:03.593Z",
+      "method": "POST",
+      "url": "http://127.0.0.1:38313/api/login",
+      "authenticated": false,
+      "request": {
+        "email": "nhu-ordinary-deleter-20261018034752@example.test",
+        "password": "[omitted test credential]"
+      },
+      "status": 200,
+      "response": {
+        "message": "Login successful",
+        "token": "[omitted test credential]",
+        "user": {
+          "id": 9,
+          "name": "Sandbox ordinary-deleter",
+          "email": "nhu-ordinary-deleter-20261018034752@example.test",
+          "password": "[omitted test credential]",
+          "role": "user",
+          "login_attempts": 0,
+          "locked_until": null,
+          "reset_token": null,
+          "shipping_address": null,
+          "phone": null
+        }
+      }
+    },
+    {
+      "tool": "fixture setup via HTTP",
+      "timestamp": "2026-10-18T03:48:03.601Z",
+      "method": "POST",
+      "url": "http://127.0.0.1:38313/api/register",
+      "authenticated": false,
+      "request": {
+        "name": "Sandbox delete-target",
+        "email": "nhu-delete-target-20261018034752@example.test",
+        "password": "[omitted test credential]"
+      },
+      "status": 200,
+      "response": {
+        "message": "User registered successfully",
+        "id": 10
+      }
+    },
+    {
+      "tool": "fixture setup via HTTP",
+      "timestamp": "2026-10-18T03:48:03.606Z",
+      "method": "POST",
+      "url": "http://127.0.0.1:38313/api/login",
+      "authenticated": false,
+      "request": {
+        "email": "nhu-delete-target-20261018034752@example.test",
+        "password": "[omitted test credential]"
+      },
+      "status": 200,
+      "response": {
+        "message": "Login successful",
+        "token": "[omitted test credential]",
+        "user": {
+          "id": 10,
+          "name": "Sandbox delete-target",
+          "email": "nhu-delete-target-20261018034752@example.test",
+          "password": "[omitted test credential]",
+          "role": "user",
+          "login_attempts": 0,
+          "locked_until": null,
+          "reset_token": null,
+          "shipping_address": null,
+          "phone": null
+        }
+      }
+    },
+    {
+      "tool": "Swagger UI Execute",
+      "bug": "BUG-FR19-02",
+      "label": "02_user_deletes_other_user",
+      "timestamp": "2026-10-18T03:48:04.518Z",
+      "method": "DELETE",
+      "url": "http://127.0.0.1:38313/api/admin/users/10",
+      "authenticated": true,
+      "status": 200,
+      "response": {
+        "message": "User deleted"
+      }
+    },
+    {
+      "tool": "fixture setup via HTTP",
+      "timestamp": "2026-10-18T03:48:04.973Z",
+      "method": "POST",
+      "url": "http://127.0.0.1:38313/api/login",
+      "authenticated": false,
+      "request": {
+        "email": "admin@eshop.com",
+        "password": "[omitted test credential]"
+      },
+      "status": 200,
+      "response": {
+        "message": "Login successful",
+        "token": "[omitted test credential]",
+        "user": {
+          "id": 1,
+          "name": "Admin User",
+          "email": "admin@eshop.com",
+          "password": "[omitted test credential]",
+          "role": "admin",
+          "login_attempts": 0,
+          "locked_until": null,
+          "reset_token": null,
+          "shipping_address": null,
+          "phone": null
+        }
+      }
+    },
+    {
+      "tool": "Swagger UI Execute",
+      "bug": "BUG-FR19-03",
+      "label": "02_admin_self_delete",
+      "timestamp": "2026-10-18T03:48:06.053Z",
+      "method": "DELETE",
+      "url": "http://127.0.0.1:38313/api/admin/users/1",
+      "authenticated": true,
+      "status": 200,
+      "response": {
+        "message": "User deleted"
+      }
+    }
+  ],
+  "queries": [
+    {
+      "tool": "Datasette SQL",
+      "bug": "BUG-FR02-01",
+      "label": "01_counter_before",
+      "query": "select id, email, role, login_attempts, locked_until from users where id = 4",
+      "timestamp": "2026-10-18T03:47:53.261Z",
+      "columns": [
+        "id",
+        "email",
+        "role",
+        "login_attempts",
+        "locked_until"
+      ],
+      "rows": [
+        {
+          "id": 4,
+          "email": "nhu-counter-20261018034752@example.test",
+          "role": "user",
+          "login_attempts": 0,
+          "locked_until": null
+        }
+      ]
+    },
+    {
+      "tool": "Datasette SQL",
+      "bug": "BUG-FR02-01",
+      "label": "03_counter_after_one_failure",
+      "query": "select id, email, role, login_attempts, locked_until from users where id = 4",
+      "timestamp": "2026-10-18T03:47:54.659Z",
+      "columns": [
+        "id",
+        "email",
+        "role",
+        "login_attempts",
+        "locked_until"
+      ],
+      "rows": [
+        {
+          "id": 4,
+          "email": "nhu-counter-20261018034752@example.test",
+          "role": "user",
+          "login_attempts": 2,
+          "locked_until": null
+        }
+      ]
+    },
+    {
+      "tool": "Datasette SQL",
+      "bug": "BUG-FR02-01",
+      "label": "06_premature_lock",
+      "query": "select id, email, login_attempts, locked_until from users where id = 4",
+      "timestamp": "2026-10-18T03:47:56.409Z",
+      "columns": [
+        "id",
+        "email",
+        "login_attempts",
+        "locked_until"
+      ],
+      "rows": [
+        {
+          "id": 4,
+          "email": "nhu-counter-20261018034752@example.test",
+          "login_attempts": 4,
+          "locked_until": "2026-10-18T03:50:55.365Z"
+        }
+      ]
+    },
+    {
+      "tool": "Datasette SQL",
+      "bug": "BUG-FR02-02",
+      "label": "02_lock_duration_sql",
+      "query": "select id, email, login_attempts, locked_until, strftime('%Y-%m-%dT%H:%M:%fZ','now') as observed_at_utc, round((julianday(locked_until)-julianday('now'))*86400, 1) as remaining_lock_seconds from users where id = 5",
+      "timestamp": "2026-10-18T03:47:58.219Z",
+      "columns": [
+        "id",
+        "email",
+        "login_attempts",
+        "locked_until",
+        "observed_at_utc",
+        "remaining_lock_seconds"
+      ],
+      "rows": [
+        {
+          "id": 5,
+          "email": "nhu-duration-20261018034752@example.test",
+          "login_attempts": 4,
+          "locked_until": "2026-10-18T03:50:57.725Z",
+          "observed_at_utc": "2026-10-18T03:47:58.217Z",
+          "remaining_lock_seconds": 179.5
+        }
+      ]
+    },
+    {
+      "tool": "Datasette SQL",
+      "bug": "BUG-FR08-01",
+      "label": "04_stored_order_totals",
+      "query": "select id, user_id, total_amount, status, created_at from orders where user_id = 6 order by id",
+      "timestamp": "2026-10-18T03:48:00.957Z",
+      "columns": [
+        "id",
+        "user_id",
+        "total_amount",
+        "status",
+        "created_at"
+      ],
+      "rows": [
+        {
+          "id": 1,
+          "user_id": 6,
+          "total_amount": 1,
+          "status": "pending",
+          "created_at": "2026-10-18 03:47:59"
+        },
+        {
+          "id": 2,
+          "user_id": 6,
+          "total_amount": -1,
+          "status": "pending",
+          "created_at": "2026-10-18 03:48:00"
+        }
+      ]
+    },
+    {
+      "tool": "Datasette SQL",
+      "bug": "BUG-FR19-01",
+      "label": "01_caller_role_user",
+      "query": "select id, email, role from users where id = 8",
+      "timestamp": "2026-10-18T03:48:02.767Z",
+      "columns": [
+        "id",
+        "email",
+        "role"
+      ],
+      "rows": [
+        {
+          "id": 8,
+          "email": "nhu-ordinary-reader-20261018034752@example.test",
+          "role": "user"
+        }
+      ]
+    },
+    {
+      "tool": "Datasette SQL",
+      "bug": "BUG-FR19-02",
+      "label": "01_caller_and_target_before",
+      "query": "select case when id = 9 then 'caller' else 'delete target' end as fixture, id, email, role from users where id in (9, 10) order by id",
+      "timestamp": "2026-10-18T03:48:03.867Z",
+      "columns": [
+        "fixture",
+        "id",
+        "email",
+        "role"
+      ],
+      "rows": [
+        {
+          "fixture": "caller",
+          "id": 9,
+          "email": "nhu-ordinary-deleter-20261018034752@example.test",
+          "role": "user"
+        },
+        {
+          "fixture": "delete target",
+          "id": 10,
+          "email": "nhu-delete-target-20261018034752@example.test",
+          "role": "user"
+        }
+      ]
+    },
+    {
+      "tool": "Datasette SQL",
+      "bug": "BUG-FR19-02",
+      "label": "03_target_deleted_in_sqlite",
+      "query": "select id as caller_id, email as caller_email, role as caller_role, (select count(*) from users where id = 10) as target_exists from users where id = 9",
+      "timestamp": "2026-10-18T03:48:04.901Z",
+      "columns": [
+        "caller_id",
+        "caller_email",
+        "caller_role",
+        "target_exists"
+      ],
+      "rows": [
+        {
+          "caller_id": 9,
+          "caller_email": "nhu-ordinary-deleter-20261018034752@example.test",
+          "caller_role": "user",
+          "target_exists": 0
+        }
+      ]
+    },
+    {
+      "tool": "Datasette SQL",
+      "bug": "BUG-FR19-03",
+      "label": "01_signed_in_admin_before",
+      "query": "select id, email, role from users where id = 1",
+      "timestamp": "2026-10-18T03:48:05.266Z",
+      "columns": [
+        "id",
+        "email",
+        "role"
+      ],
+      "rows": [
+        {
+          "id": 1,
+          "email": "admin@eshop.com",
+          "role": "admin"
+        }
+      ]
+    },
+    {
+      "tool": "Datasette SQL",
+      "bug": "BUG-FR19-03",
+      "label": "03_admin_deleted_in_sqlite",
+      "query": "select 1 as signed_in_admin_id, count(*) as own_account_exists from users where id = 1",
+      "timestamp": "2026-10-18T03:48:06.456Z",
+      "columns": [
+        "signed_in_admin_id",
+        "own_account_exists"
+      ],
+      "rows": [
+        {
+          "signed_in_admin_id": 1,
+          "own_account_exists": 0
+        }
+      ]
+    }
+  ],
+  "screenshots": [
+    {
+      "bug": "BUG-FR02-01",
+      "label": "01_counter_before",
+      "tool": "Datasette",
+      "path": "Supporting_Materials/Evidence/Live_API_Tools/BUG-FR02-01_01_counter_before.png",
+      "timestamp": "2026-10-18T03:47:53.532Z",
+      "toolUrl": "http://127.0.0.1:38315/database?sql=select%20id%2C%20email%2C%20role%2C%20login_attempts%2C%20locked_until%20from%20users%20where%20id%20%3D%204",
+      "sha256": "2a90d30f31ff0aa867c75febbfb23a4d4fa3f7f1dbf739a78ac624d9f8911e55"
+    },
+    {
+      "bug": "BUG-FR02-01",
+      "label": "02_first_wrong_password",
+      "tool": "Swagger UI",
+      "path": "Supporting_Materials/Evidence/Live_API_Tools/BUG-FR02-01_02_first_wrong_password.png",
+      "timestamp": "2026-10-18T03:47:54.336Z",
+      "toolUrl": "http://127.0.0.1:38314/?case=BUG-FR02-01_02_first_wrong_password",
+      "sha256": "0b92b2911d288fb7ae28d90c503756e03f7f32409726c7f96dae63a7f014fa2c"
+    },
+    {
+      "bug": "BUG-FR02-01",
+      "label": "03_counter_after_one_failure",
+      "tool": "Datasette",
+      "path": "Supporting_Materials/Evidence/Live_API_Tools/BUG-FR02-01_03_counter_after_one_failure.png",
+      "timestamp": "2026-10-18T03:47:54.710Z",
+      "toolUrl": "http://127.0.0.1:38315/database?sql=select%20id%2C%20email%2C%20role%2C%20login_attempts%2C%20locked_until%20from%20users%20where%20id%20%3D%204",
+      "sha256": "7a144048df110f4979f111a74bff1d6dbcaf471612b7e597d69351a6a7064403"
+    },
+    {
+      "bug": "BUG-FR02-01",
+      "label": "05_correct_password_after_two_failures",
+      "tool": "Swagger UI",
+      "path": "Supporting_Materials/Evidence/Live_API_Tools/BUG-FR02-01_05_correct_password_after_two_failures.png",
+      "timestamp": "2026-10-18T03:47:56.119Z",
+      "toolUrl": "http://127.0.0.1:38314/?case=BUG-FR02-01_05_correct_password_after_two_failures",
+      "sha256": "321669b5dd8038652d5be35e0c4c56208c85212fdca775e568222b2d5d3b1e05"
+    },
+    {
+      "bug": "BUG-FR02-01",
+      "label": "06_premature_lock",
+      "tool": "Datasette",
+      "path": "Supporting_Materials/Evidence/Live_API_Tools/BUG-FR02-01_06_premature_lock.png",
+      "timestamp": "2026-10-18T03:47:56.462Z",
+      "toolUrl": "http://127.0.0.1:38315/database?sql=select%20id%2C%20email%2C%20login_attempts%2C%20locked_until%20from%20users%20where%20id%20%3D%204",
+      "sha256": "cc84be6588c558fb41e328f85136e5bbe3bb7192ed1c56d08bb4e90f81e035a0"
+    },
+    {
+      "bug": "BUG-FR02-02",
+      "label": "01_lock_request_2",
+      "tool": "Swagger UI",
+      "path": "Supporting_Materials/Evidence/Live_API_Tools/BUG-FR02-02_01_lock_request_2.png",
+      "timestamp": "2026-10-18T03:47:57.891Z",
+      "toolUrl": "http://127.0.0.1:38314/?case=BUG-FR02-02_01_lock_request_2",
+      "sha256": "551408899bd5048dcf9c811bc2dd0f9072a8f44acb307645027bc36e0b95360a"
+    },
+    {
+      "bug": "BUG-FR02-02",
+      "label": "02_lock_duration_sql",
+      "tool": "Datasette",
+      "path": "Supporting_Materials/Evidence/Live_API_Tools/BUG-FR02-02_02_lock_duration_sql.png",
+      "timestamp": "2026-10-18T03:47:58.279Z",
+      "toolUrl": "http://127.0.0.1:38315/database?sql=select%20id%2C%20email%2C%20login_attempts%2C%20locked_until%2C%20strftime(%27%25Y-%25m-%25dT%25H%3A%25M%3A%25fZ%27%2C%27now%27)%20as%20observed_at_utc%2C%20round((julianday(locked_until)-julianday(%27now%27))*86400%2C%201)%20as%20remaining_lock_seconds%20from%20users%20where%20id%20%3D%205",
+      "sha256": "37605f18ed652801bd9efd9abf07f033fdf110236227094808c30da9e1844fe2"
+    },
+    {
+      "bug": "BUG-FR08-01",
+      "label": "01_cart_precondition",
+      "tool": "Swagger UI",
+      "path": "Supporting_Materials/Evidence/Live_API_Tools/BUG-FR08-01_01_cart_precondition.png",
+      "timestamp": "2026-10-18T03:47:59.004Z",
+      "toolUrl": "http://127.0.0.1:38314/?case=BUG-FR08-01_01_cart_precondition",
+      "sha256": "cdb1a43624046b6ec8ef0b1b9fd108cf8f486fbcc219c394bb3534acaa096b3e"
+    },
+    {
+      "bug": "BUG-FR08-01",
+      "label": "02_forged_total_one",
+      "tool": "Swagger UI",
+      "path": "Supporting_Materials/Evidence/Live_API_Tools/BUG-FR08-01_02_forged_total_one.png",
+      "timestamp": "2026-10-18T03:47:59.824Z",
+      "toolUrl": "http://127.0.0.1:38314/?case=BUG-FR08-01_02_forged_total_one",
+      "sha256": "de7dd151eac3da66646f0fb595094e93fe8fa8ada06b58e76c8e670edca18008"
+    },
+    {
+      "bug": "BUG-FR08-01",
+      "label": "03_negative_total",
+      "tool": "Swagger UI",
+      "path": "Supporting_Materials/Evidence/Live_API_Tools/BUG-FR08-01_03_negative_total.png",
+      "timestamp": "2026-10-18T03:48:00.664Z",
+      "toolUrl": "http://127.0.0.1:38314/?case=BUG-FR08-01_03_negative_total",
+      "sha256": "33ac86936ac3259b6599adcb4db5dd2e2ad9236b76d7cbf0877ae4566355f146"
+    },
+    {
+      "bug": "BUG-FR08-01",
+      "label": "04_stored_order_totals",
+      "tool": "Datasette",
+      "path": "Supporting_Materials/Evidence/Live_API_Tools/BUG-FR08-01_04_stored_order_totals.png",
+      "timestamp": "2026-10-18T03:48:01.015Z",
+      "toolUrl": "http://127.0.0.1:38315/database?sql=select%20id%2C%20user_id%2C%20total_amount%2C%20status%2C%20created_at%20from%20orders%20where%20user_id%20%3D%206%20order%20by%20id",
+      "sha256": "5018ff511ae873c98579866a666983b54b1072a0d58fde70cb862b3919741153"
+    },
+    {
+      "bug": "BUG-FR08-02",
+      "label": "01_successful_checkout",
+      "tool": "Swagger UI",
+      "path": "Supporting_Materials/Evidence/Live_API_Tools/BUG-FR08-02_01_successful_checkout.png",
+      "timestamp": "2026-10-18T03:48:01.799Z",
+      "toolUrl": "http://127.0.0.1:38314/?case=BUG-FR08-02_01_successful_checkout",
+      "sha256": "a7b27202727e234e77723b738a816b467ddc4f7c8f2e887c394cbd9d86cd3139"
+    },
+    {
+      "bug": "BUG-FR08-02",
+      "label": "02_cart_after_success",
+      "tool": "Swagger UI",
+      "path": "Supporting_Materials/Evidence/Live_API_Tools/BUG-FR08-02_02_cart_after_success.png",
+      "timestamp": "2026-10-18T03:48:02.494Z",
+      "toolUrl": "http://127.0.0.1:38314/?case=BUG-FR08-02_02_cart_after_success",
+      "sha256": "55ac3c88e6b6f4eceb1f55e7003504d330017a0fccaa3dd65bff7af93ab22573"
+    },
+    {
+      "bug": "BUG-FR19-01",
+      "label": "01_caller_role_user",
+      "tool": "Datasette",
+      "path": "Supporting_Materials/Evidence/Live_API_Tools/BUG-FR19-01_01_caller_role_user.png",
+      "timestamp": "2026-10-18T03:48:02.820Z",
+      "toolUrl": "http://127.0.0.1:38315/database?sql=select%20id%2C%20email%2C%20role%20from%20users%20where%20id%20%3D%208",
+      "sha256": "7017face17f89e5826bd0b480b5c870b422547d3caaebf33c18177051758e98c"
+    },
+    {
+      "bug": "BUG-FR19-01",
+      "label": "02_user_reads_admin_list",
+      "tool": "Swagger UI",
+      "path": "Supporting_Materials/Evidence/Live_API_Tools/BUG-FR19-01_02_user_reads_admin_list.png",
+      "timestamp": "2026-10-18T03:48:03.564Z",
+      "toolUrl": "http://127.0.0.1:38314/?case=BUG-FR19-01_02_user_reads_admin_list",
+      "sha256": "ac9b1c4361f61cac4b55a4e59d839db4355cc635dcb03e89f35a635d26b9f16d"
+    },
+    {
+      "bug": "BUG-FR19-02",
+      "label": "01_caller_and_target_before",
+      "tool": "Datasette",
+      "path": "Supporting_Materials/Evidence/Live_API_Tools/BUG-FR19-02_01_caller_and_target_before.png",
+      "timestamp": "2026-10-18T03:48:03.923Z",
+      "toolUrl": "http://127.0.0.1:38315/database?sql=select%20case%20when%20id%20%3D%209%20then%20%27caller%27%20else%20%27delete%20target%27%20end%20as%20fixture%2C%20id%2C%20email%2C%20role%20from%20users%20where%20id%20in%20(9%2C%2010)%20order%20by%20id",
+      "sha256": "b8b494ab407d56a91e24581bcf255ca712803bb0ab00bbcff8f337d3b3a49976"
+    },
+    {
+      "bug": "BUG-FR19-02",
+      "label": "02_user_deletes_other_user",
+      "tool": "Swagger UI",
+      "path": "Supporting_Materials/Evidence/Live_API_Tools/BUG-FR19-02_02_user_deletes_other_user.png",
+      "timestamp": "2026-10-18T03:48:04.617Z",
+      "toolUrl": "http://127.0.0.1:38314/?case=BUG-FR19-02_02_user_deletes_other_user",
+      "sha256": "502417c1b83373720ce78c723d62efe8a93607f51ee811152aacbb7b8fe19914"
+    },
+    {
+      "bug": "BUG-FR19-02",
+      "label": "03_target_deleted_in_sqlite",
+      "tool": "Datasette",
+      "path": "Supporting_Materials/Evidence/Live_API_Tools/BUG-FR19-02_03_target_deleted_in_sqlite.png",
+      "timestamp": "2026-10-18T03:48:04.958Z",
+      "toolUrl": "http://127.0.0.1:38315/database?sql=select%20id%20as%20caller_id%2C%20email%20as%20caller_email%2C%20role%20as%20caller_role%2C%20(select%20count(*)%20from%20users%20where%20id%20%3D%2010)%20as%20target_exists%20from%20users%20where%20id%20%3D%209",
+      "sha256": "5727b6b49c824261513ba876a121654f6d0855e19d7844308c3860c5987977fc"
+    },
+    {
+      "bug": "BUG-FR19-03",
+      "label": "01_signed_in_admin_before",
+      "tool": "Datasette",
+      "path": "Supporting_Materials/Evidence/Live_API_Tools/BUG-FR19-03_01_signed_in_admin_before.png",
+      "timestamp": "2026-10-18T03:48:05.322Z",
+      "toolUrl": "http://127.0.0.1:38315/database?sql=select%20id%2C%20email%2C%20role%20from%20users%20where%20id%20%3D%201",
+      "sha256": "91f0582a2f5533697375758c414ea080b9f3e8bb8b04a64f3d0551464fc8c5ea"
+    },
+    {
+      "bug": "BUG-FR19-03",
+      "label": "02_admin_self_delete",
+      "tool": "Swagger UI",
+      "path": "Supporting_Materials/Evidence/Live_API_Tools/BUG-FR19-03_02_admin_self_delete.png",
+      "timestamp": "2026-10-18T03:48:06.161Z",
+      "toolUrl": "http://127.0.0.1:38314/?case=BUG-FR19-03_02_admin_self_delete",
+      "sha256": "5cb730919ad1955590e2daccdb2ec7fc5b0fcee91978cc9d0b3fb60e601c9461"
+    },
+    {
+      "bug": "BUG-FR19-03",
+      "label": "03_admin_deleted_in_sqlite",
+      "tool": "Datasette",
+      "path": "Supporting_Materials/Evidence/Live_API_Tools/BUG-FR19-03_03_admin_deleted_in_sqlite.png",
+      "timestamp": "2026-10-18T03:48:06.514Z",
+      "toolUrl": "http://127.0.0.1:38315/database?sql=select%201%20as%20signed_in_admin_id%2C%20count(*)%20as%20own_account_exists%20from%20users%20where%20id%20%3D%201",
+      "sha256": "59fa27c535b3fa237624f90ec35129a02783f55b7203066235f80d629d1e2635"
+    }
+  ],
+  "bugs": {
+    "BUG-FR02-01": {
+      "reproduced": true,
+      "fixtureId": 4,
+      "counterAfterOneFailure": 2,
+      "counterAfterTwoFailures": 4,
+      "correctPasswordHttpAfterTwoFailures": 403
+    },
+    "BUG-FR02-02": {
+      "reproduced": true,
+      "fixtureId": 5,
+      "remainingSeconds": 179.5,
+      "expectedSeconds": 30
+    },
+    "BUG-FR08-01": {
+      "reproduced": true,
+      "fixtureId": 6,
+      "cartTotal": 60000000,
+      "productPrice": 30000000,
+      "quantity": 2,
+      "storedTotals": [
+        1,
+        -1
+      ]
+    },
+    "BUG-FR08-02": {
+      "reproduced": true,
+      "fixtureId": 7,
+      "checkoutHttp": 200,
+      "remainingItems": 1
+    },
+    "BUG-FR19-01": {
+      "reproduced": true,
+      "fixtureId": 8,
+      "callerRole": "user",
+      "http": 200,
+      "returnedUsers": 8
+    },
+    "BUG-FR19-02": {
+      "reproduced": true,
+      "callerId": 9,
+      "callerRole": "user",
+      "targetId": 10,
+      "http": 200,
+      "targetExists": false
+    },
+    "BUG-FR19-03": {
+      "reproduced": true,
+      "adminId": 1,
+      "role": "admin",
+      "http": 200,
+      "ownAccountExists": false
+    }
+  },
+  "finishedAt": "2026-10-18T03:48:06.526Z"
+}
