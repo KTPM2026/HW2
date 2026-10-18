@@ -1,0 +1,260 @@
+{
+  "student": "Thạch Như",
+  "studentId": "23120312",
+  "timestamp": "2026-10-14T07:30:59.479Z",
+  "testEnvironment": "Isolated EShop backend copy; API only",
+  "sourceCommit": "85af3ba",
+  "summary": {
+    "executed": 20,
+    "passed": 10,
+    "failed": 10,
+    "observations": 1,
+    "errors": 0
+  },
+  "provenance": "Transcribed without modifying actual values from the API execution JSON inspected in CodeLocal D:\\AIWorkspaces\\HW2\\23120312_ThachNhu\\results\\api-execution.json. For full original fixture data and scripts refer to original local file.",
+  "results": [
+    {
+      "id": "A02-01",
+      "feature": "FR-02",
+      "expected": "HTTP 200 và JWT hợp lệ",
+      "actual": {
+        "status": 200,
+        "hasJwt": true
+      },
+      "status": "PASS",
+      "note": "Lớp hợp lệ"
+    },
+    {
+      "id": "A02-02",
+      "feature": "FR-02",
+      "expected": "HTTP 401, không trả JWT",
+      "actual": {
+        "status": 401,
+        "hasJwt": false
+      },
+      "status": "PASS",
+      "note": "Lớp tài khoản không tồn tại"
+    },
+    {
+      "id": "A02-03",
+      "feature": "FR-02",
+      "expected": "login_attempts = 1, chưa khóa",
+      "actual": {
+        "status": 401,
+        "login_attempts": 2,
+        "locked_until": null
+      },
+      "status": "FAIL",
+      "note": "Biên n=1"
+    },
+    {
+      "id": "A02-04",
+      "feature": "FR-02",
+      "expected": "Bộ đếm=2, chưa khóa và cho đăng nhập đúng",
+      "actual": {
+        "wrongHttp": [
+          401,
+          401
+        ],
+        "login_attempts": 4,
+        "locked_until": "2026-10-14T07:33:59.267Z",
+        "correctHttp": 403
+      },
+      "status": "FAIL",
+      "note": "Biên ngưỡng 3-1"
+    },
+    {
+      "id": "A02-05",
+      "feature": "FR-02",
+      "expected": "Bộ đếm=3, tài khoản khóa 30 giây, đăng nhập đúng bị từ chối",
+      "actual": {
+        "wrongHttp": [
+          401,
+          401,
+          403
+        ],
+        "login_attempts": 4,
+        "locked_until": "2026-10-14T07:33:59.295Z",
+        "correctHttp": 403
+      },
+      "status": "FAIL",
+      "note": "Biên ngưỡng 3"
+    },
+    {
+      "id": "A02-06",
+      "feature": "FR-02",
+      "expected": "Thời gian khóa xấp xỉ 30 giây (sai số đo ±3 giây)",
+      "actual": {
+        "remainingSeconds": 180
+      },
+      "status": "FAIL",
+      "note": "Biên thời gian"
+    },
+    {
+      "id": "A02-07",
+      "feature": "FR-02",
+      "expected": "Đăng nhập thành công và đặt lại bộ đếm = 0",
+      "actual": {
+        "validHttp": 200,
+        "login_attempts": 0,
+        "locked_until": null
+      },
+      "status": "PASS",
+      "note": "Chuyển trạng thái"
+    },
+    {
+      "id": "B08-01",
+      "feature": "FR-08",
+      "expected": "HTTP 401, không tạo đơn",
+      "actual": {
+        "status": 401
+      },
+      "status": "PASS",
+      "note": "Auth missing"
+    },
+    {
+      "id": "B08-02",
+      "feature": "FR-08",
+      "expected": "HTTP 403, không tạo đơn",
+      "actual": {
+        "status": 403
+      },
+      "status": "PASS",
+      "note": "Auth invalid"
+    },
+    {
+      "id": "B08-03",
+      "feature": "FR-08",
+      "expected": "Đơn pending, tiền lưu đúng 200.000đ",
+      "actual": {
+        "http": 200,
+        "order": {
+          "total_amount": 200000,
+          "status": "pending"
+        }
+      },
+      "status": "PASS",
+      "note": "Happy path"
+    },
+    {
+      "id": "B08-04",
+      "feature": "FR-08",
+      "expected": "Backend tính lại 200.000đ hoặc từ chối gian lận",
+      "actual": {
+        "http": 200,
+        "stored": 1
+      },
+      "status": "FAIL",
+      "note": "Client tampering"
+    },
+    {
+      "id": "B08-05",
+      "feature": "FR-08",
+      "expected": "Backend tính lại 100.000đ hoặc từ chối",
+      "actual": {
+        "http": 200,
+        "stored": -1
+      },
+      "status": "FAIL",
+      "note": "Negative total"
+    },
+    {
+      "id": "B08-06",
+      "feature": "FR-08",
+      "expected": "Giỏ hàng server rỗng",
+      "actual": {
+        "checkoutHttp": 200,
+        "remainingItems": 1
+      },
+      "status": "FAIL",
+      "note": "State after checkout"
+    },
+    {
+      "id": "B08-07",
+      "feature": "FR-08",
+      "expected": "Chưa có oracle rõ trong SRS: ghi nhận và hỏi giảng viên",
+      "actual": {
+        "status": 200,
+        "createdOrder": true
+      },
+      "status": "OBSERVATION",
+      "note": "Không gắn nhãn bug khi chưa có oracle"
+    },
+    {
+      "id": "C19-01",
+      "feature": "FR-19",
+      "expected": "HTTP 401, không có dữ liệu",
+      "actual": {
+        "status": 401
+      },
+      "status": "PASS",
+      "note": "Auth missing"
+    },
+    {
+      "id": "C19-02",
+      "feature": "FR-19",
+      "expected": "HTTP 403, không có dữ liệu",
+      "actual": {
+        "status": 403
+      },
+      "status": "PASS",
+      "note": "Auth invalid"
+    },
+    {
+      "id": "C19-03",
+      "feature": "FR-19",
+      "expected": "Trả danh sách users không có trường password",
+      "actual": {
+        "status": 200,
+        "users": 13,
+        "passwordExposed": false
+      },
+      "status": "PASS",
+      "note": "Authorized read"
+    },
+    {
+      "id": "C19-04",
+      "feature": "FR-19",
+      "expected": "HTTP 403, không lộ danh sách",
+      "actual": {
+        "status": 200,
+        "usersExposed": true
+      },
+      "status": "FAIL",
+      "note": "RBAC read"
+    },
+    {
+      "id": "C19-05",
+      "feature": "FR-19",
+      "expected": "HTTP 403; user đích còn tồn tại",
+      "actual": {
+        "status": 200,
+        "targetExists": false
+      },
+      "status": "FAIL",
+      "note": "RBAC write"
+    },
+    {
+      "id": "C19-06",
+      "feature": "FR-19",
+      "expected": "Đúng một user đích bị xóa",
+      "actual": {
+        "status": 200,
+        "targetExists": false
+      },
+      "status": "PASS",
+      "note": "Authorized write"
+    },
+    {
+      "id": "C19-07",
+      "feature": "FR-19",
+      "expected": "Phải từ chối và giữ nguyên tài khoản",
+      "actual": {
+        "status": 200,
+        "selfExists": false
+      },
+      "status": "FAIL",
+      "note": "Self-delete forbidden"
+    }
+  ]
+}
