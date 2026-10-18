@@ -1,0 +1,2504 @@
+{
+  "sourceRevision": "85af3ba875c88283615e22cb108f13e2fccaf0e9",
+  "device": {
+    "serial": "emulator-5580",
+    "android": "16",
+    "api": 36,
+    "screen": "720x1280",
+    "expoGo": "54.0.8"
+  },
+  "startedAt": "2026-10-18T04:47:32.165486+00:00",
+  "runtimeAdaptations": [
+    "Mobile API_URL only",
+    "Backend port/loopback only",
+    "HTTP recorder; one explicit total-tampering experiment D-C04"
+  ],
+  "results": [
+    {
+      "id": "D-L01",
+      "status": "PASS",
+      "actual": {
+        "authenticatedGreeting": true,
+        "fixtureId": 75
+      },
+      "note": "",
+      "startedAt": "2026-10-18T04:47:32.176036+00:00",
+      "finishedAt": "2026-10-18T04:48:01.084711+00:00",
+      "screenshots": [
+        {
+          "path": "Supporting_Materials/Evidence/Mobile_Android/D-L01_authenticated_home.png",
+          "sha256": "facd1ded44211af366652c40b0ed4f865799b371405f2e3802c564b20b125c87",
+          "ui": [
+            "EShop Mobile",
+            "EShop Mobile",
+            "Chào, Mobile L01",
+            "Chào, Mobile L01",
+            "Giỏ (0)",
+            "Giỏ (0)",
+            "Danh sách sản phẩm",
+            "Tìm kiếm...",
+            "Tìm",
+            "Tìm",
+            "iPhone 15 Pro Max",
+            "30,000,000 ₫",
+            "Xem chi tiết",
+            "Xem chi tiết",
+            "Thêm vào giỏ",
+            "Thêm vào giỏ",
+            "Hiển thị 7 sản phẩm",
+            "© 2026 EShop SUT. Dành cho mục đích kiểm thử."
+          ],
+          "capturedAt": 1792298881.084711
+        }
+      ],
+      "steps": [
+        {
+          "action": "tap",
+          "target": "Đăng nhập"
+        },
+        {
+          "action": "type",
+          "fieldIndex": 0,
+          "value": "mobile-1792298861-L01-1@example.test"
+        },
+        {
+          "action": "type",
+          "fieldIndex": 1,
+          "value": "[redacted test credential]"
+        },
+        {
+          "action": "tap",
+          "target": "Sign In"
+        }
+      ],
+      "network": [
+        {
+          "timestamp": "2026-10-18T04:47:38.264Z",
+          "userAgent": "okhttp/4.12.0",
+          "method": "GET",
+          "path": "/api/products?search=",
+          "caller": null,
+          "mutation": null,
+          "status": 304,
+          "response": "",
+          "durationMs": 20
+        },
+        {
+          "timestamp": "2026-10-18T04:47:56.340Z",
+          "userAgent": "okhttp/4.12.0",
+          "method": "POST",
+          "path": "/api/login",
+          "caller": null,
+          "request": {
+            "email": "mobile-1792298861-L01-1@example.test",
+            "password": "[redacted test credential]"
+          },
+          "mutation": null,
+          "status": 200,
+          "response": {
+            "message": "Login successful",
+            "token": "[redacted test credential]",
+            "user": {
+              "id": 75,
+              "name": "Mobile L01",
+              "email": "mobile-1792298861-L01-1@example.test",
+              "password": "[redacted test credential]",
+              "role": "user",
+              "login_attempts": 0,
+              "locked_until": null,
+              "reset_token": null,
+              "shipping_address": null,
+              "phone": null
+            }
+          },
+          "durationMs": 5
+        },
+        {
+          "timestamp": "2026-10-18T04:47:56.382Z",
+          "userAgent": "okhttp/4.12.0",
+          "method": "GET",
+          "path": "/api/orders/my-orders",
+          "caller": {
+            "id": 75,
+            "role": "user"
+          },
+          "mutation": null,
+          "status": 200,
+          "response": [],
+          "durationMs": 6
+        }
+      ]
+    },
+    {
+      "id": "D-L02",
+      "status": "PASS",
+      "actual": {
+        "loginRejected": true,
+        "state": {
+          "login_attempts": 2,
+          "locked_until": null
+        },
+        "fixtureId": 76
+      },
+      "note": "The UI rejects wrong credentials; counter defect is asserted in separate boundary cases.",
+      "startedAt": "2026-10-18T04:48:01.098787+00:00",
+      "finishedAt": "2026-10-18T04:48:27.433005+00:00",
+      "screenshots": [
+        {
+          "path": "Supporting_Materials/Evidence/Mobile_Android/D-L02_wrong_password.png",
+          "sha256": "9a3e5019610d77d7fa0739ebb3be0fec2e7703c50b37a5bdf9179ee5fc5146ce",
+          "ui": [
+            "EShop Mobile",
+            "EShop Mobile",
+            "Đăng nhập",
+            "Đăng nhập",
+            "Giỏ (0)",
+            "Giỏ (0)",
+            "Đăng Nhập",
+            "Username",
+            "mobile-1792298888-L02-2@example.test",
+            "Mật khẩu",
+            "••••••••••",
+            "Quên mật khẩu?",
+            "Quên mật khẩu?",
+            "Sign In",
+            "Sign In",
+            "Chưa có tài khoản? Đăng ký ngay",
+            "Chưa có tài khoản? Đăng ký ngay",
+            "Đăng nhập thất bại. Vui lòng kiểm tra lại.",
+            "Quay Lại",
+            "Quay Lại",
+            "© 2026 EShop SUT. Dành cho mục đích kiểm thử."
+          ],
+          "capturedAt": 1792298907.427702
+        }
+      ],
+      "steps": [
+        {
+          "action": "tap",
+          "target": "Đăng nhập"
+        },
+        {
+          "action": "type",
+          "fieldIndex": 0,
+          "value": "mobile-1792298888-L02-2@example.test"
+        },
+        {
+          "action": "type",
+          "fieldIndex": 1,
+          "value": "[redacted test credential]"
+        },
+        {
+          "action": "tap",
+          "target": "Sign In"
+        }
+      ],
+      "network": [
+        {
+          "timestamp": "2026-10-18T04:48:05.370Z",
+          "userAgent": "okhttp/4.12.0",
+          "method": "GET",
+          "path": "/api/products?search=",
+          "caller": null,
+          "mutation": null,
+          "status": 304,
+          "response": "",
+          "durationMs": 3
+        },
+        {
+          "timestamp": "2026-10-18T04:48:22.770Z",
+          "userAgent": "okhttp/4.12.0",
+          "method": "POST",
+          "path": "/api/login",
+          "caller": null,
+          "request": {
+            "email": "mobile-1792298888-L02-2@example.test",
+            "password": "[redacted test credential]"
+          },
+          "mutation": null,
+          "status": 401,
+          "response": {
+            "error": "Invalid email or password"
+          },
+          "durationMs": 3
+        }
+      ]
+    },
+    {
+      "id": "D-L03",
+      "status": "FAIL",
+      "actual": {
+        "correctPasswordRejectedAfterTwoFailures": true,
+        "state": {
+          "login_attempts": 4,
+          "locked_until": "2026-10-18T04:51:53.615Z"
+        },
+        "fixtureId": 77
+      },
+      "note": "Expected success before the third failure. Same root cause as Issue #70.",
+      "startedAt": "2026-10-18T04:48:27.444809+00:00",
+      "finishedAt": "2026-10-18T04:49:07.239520+00:00",
+      "screenshots": [
+        {
+          "path": "Supporting_Materials/Evidence/Mobile_Android/D-L03_correct_after_two_wrong.png",
+          "sha256": "9bc1afbb66ec7a5112b352ea4a50b669e8930dbc6db27ad2588a731f24a78aad",
+          "ui": [
+            "EShop Mobile",
+            "EShop Mobile",
+            "Đăng nhập",
+            "Đăng nhập",
+            "Giỏ (0)",
+            "Giỏ (0)",
+            "Đăng Nhập",
+            "Username",
+            "mobile-1792298914-L03-3@example.test",
+            "Mật khẩu",
+            "•••••••••",
+            "Quên mật khẩu?",
+            "Quên mật khẩu?",
+            "Sign In",
+            "Sign In",
+            "Chưa có tài khoản? Đăng ký ngay",
+            "Chưa có tài khoản? Đăng ký ngay",
+            "Đăng nhập thất bại. Vui lòng kiểm tra lại.",
+            "Quay Lại",
+            "Quay Lại",
+            "© 2026 EShop SUT. Dành cho mục đích kiểm thử."
+          ],
+          "capturedAt": 1792298947.2383778
+        }
+      ],
+      "steps": [
+        {
+          "action": "tap",
+          "target": "Đăng nhập"
+        },
+        {
+          "action": "type",
+          "fieldIndex": 0,
+          "value": "mobile-1792298914-L03-3@example.test"
+        },
+        {
+          "action": "type",
+          "fieldIndex": 1,
+          "value": "[redacted test credential]"
+        },
+        {
+          "action": "tap",
+          "target": "Sign In"
+        },
+        {
+          "action": "tap",
+          "target": "Sign In"
+        },
+        {
+          "action": "type",
+          "fieldIndex": 1,
+          "value": "[redacted test credential]"
+        },
+        {
+          "action": "tap",
+          "target": "Sign In"
+        }
+      ],
+      "network": [
+        {
+          "timestamp": "2026-10-18T04:48:31.380Z",
+          "userAgent": "okhttp/4.12.0",
+          "method": "GET",
+          "path": "/api/products?search=",
+          "caller": null,
+          "mutation": null,
+          "status": 304,
+          "response": "",
+          "durationMs": 3
+        },
+        {
+          "timestamp": "2026-10-18T04:48:49.084Z",
+          "userAgent": "okhttp/4.12.0",
+          "method": "POST",
+          "path": "/api/login",
+          "caller": null,
+          "request": {
+            "email": "mobile-1792298914-L03-3@example.test",
+            "password": "[redacted test credential]"
+          },
+          "mutation": null,
+          "status": 401,
+          "response": {
+            "error": "Invalid email or password"
+          },
+          "durationMs": 4
+        },
+        {
+          "timestamp": "2026-10-18T04:48:53.616Z",
+          "userAgent": "okhttp/4.12.0",
+          "method": "POST",
+          "path": "/api/login",
+          "caller": null,
+          "request": {
+            "email": "mobile-1792298914-L03-3@example.test",
+            "password": "[redacted test credential]"
+          },
+          "mutation": null,
+          "status": 401,
+          "response": {
+            "error": "Invalid email or password"
+          },
+          "durationMs": 3
+        },
+        {
+          "timestamp": "2026-10-18T04:49:02.120Z",
+          "userAgent": "okhttp/4.12.0",
+          "method": "POST",
+          "path": "/api/login",
+          "caller": null,
+          "request": {
+            "email": "mobile-1792298914-L03-3@example.test",
+            "password": "[redacted test credential]"
+          },
+          "mutation": null,
+          "status": 403,
+          "response": {
+            "error": "Tài khoản đã bị khóa. Vui lòng thử lại sau."
+          },
+          "durationMs": 4
+        }
+      ]
+    },
+    {
+      "id": "D-L04",
+      "status": "PASS",
+      "actual": {
+        "correctLoginBlockedAfterThreeAttempts": true,
+        "fixtureId": 96
+      },
+      "note": "This asserts blocked login after three attempts. Premature lock/counter behavior remains a failure in D-L03 and A02-05.",
+      "startedAt": "2026-10-18T04:59:51.656696+00:00",
+      "finishedAt": "2026-10-18T05:00:31.227906+00:00",
+      "screenshots": [
+        {
+          "path": "Supporting_Materials/Evidence/Mobile_Android/D-L04_locked_after_three_attempts.png",
+          "sha256": "ef39ee467821101f80c3d478c3db3bf5e0fffb2085fc755d412a4d2e17a71310",
+          "ui": [
+            "EShop Mobile",
+            "EShop Mobile",
+            "Đăng nhập",
+            "Đăng nhập",
+            "Giỏ (0)",
+            "Giỏ (0)",
+            "Đăng Nhập",
+            "Username",
+            "mobile-1792299598-L04-1@example.test",
+            "Mật khẩu",
+            "•••••••••",
+            "Quên mật khẩu?",
+            "Quên mật khẩu?",
+            "Sign In",
+            "Sign In",
+            "Chưa có tài khoản? Đăng ký ngay",
+            "Chưa có tài khoản? Đăng ký ngay",
+            "Đăng nhập thất bại. Vui lòng kiểm tra lại.",
+            "Quay Lại",
+            "Quay Lại",
+            "© 2026 EShop SUT. Dành cho mục đích kiểm thử."
+          ],
+          "capturedAt": 1792299631.2279062
+        }
+      ],
+      "steps": [
+        {
+          "action": "tap",
+          "target": "Đăng nhập"
+        },
+        {
+          "action": "type",
+          "fieldIndex": 0,
+          "value": "mobile-1792299598-L04-1@example.test"
+        },
+        {
+          "action": "type",
+          "fieldIndex": 1,
+          "value": "[redacted test credential]"
+        },
+        {
+          "action": "tap",
+          "target": "Sign In"
+        },
+        {
+          "action": "tap",
+          "target": "Sign In"
+        },
+        {
+          "action": "tap",
+          "target": "Sign In"
+        },
+        {
+          "action": "type",
+          "fieldIndex": 1,
+          "value": "[redacted test credential]"
+        },
+        {
+          "action": "tap",
+          "target": "Sign In"
+        }
+      ],
+      "network": [
+        {
+          "timestamp": "2026-10-18T04:59:56.631Z",
+          "userAgent": "okhttp/4.12.0",
+          "method": "GET",
+          "path": "/api/products?search=",
+          "caller": null,
+          "mutation": null,
+          "status": 304,
+          "response": "",
+          "durationMs": 2
+        },
+        {
+          "timestamp": "2026-10-18T05:00:11.494Z",
+          "userAgent": "okhttp/4.12.0",
+          "method": "POST",
+          "path": "/api/login",
+          "caller": null,
+          "request": {
+            "email": "mobile-1792299598-L04-1@example.test",
+            "password": "[redacted test credential]"
+          },
+          "mutation": null,
+          "status": 401,
+          "response": {
+            "error": "Invalid email or password"
+          },
+          "durationMs": 2
+        },
+        {
+          "timestamp": "2026-10-18T05:00:15.573Z",
+          "userAgent": "okhttp/4.12.0",
+          "method": "POST",
+          "path": "/api/login",
+          "caller": null,
+          "request": {
+            "email": "mobile-1792299598-L04-1@example.test",
+            "password": "[redacted test credential]"
+          },
+          "mutation": null,
+          "status": 401,
+          "response": {
+            "error": "Invalid email or password"
+          },
+          "durationMs": 2
+        },
+        {
+          "timestamp": "2026-10-18T05:00:19.688Z",
+          "userAgent": "okhttp/4.12.0",
+          "method": "POST",
+          "path": "/api/login",
+          "caller": null,
+          "request": {
+            "email": "mobile-1792299598-L04-1@example.test",
+            "password": "[redacted test credential]"
+          },
+          "mutation": null,
+          "status": 403,
+          "response": {
+            "error": "Tài khoản đã bị khóa. Vui lòng thử lại sau."
+          },
+          "durationMs": 2
+        },
+        {
+          "timestamp": "2026-10-18T05:00:27.002Z",
+          "userAgent": "okhttp/4.12.0",
+          "method": "POST",
+          "path": "/api/login",
+          "caller": null,
+          "request": {
+            "email": "mobile-1792299598-L04-1@example.test",
+            "password": "[redacted test credential]"
+          },
+          "mutation": null,
+          "status": 403,
+          "response": {
+            "error": "Tài khoản đã bị khóa. Vui lòng thử lại sau."
+          },
+          "durationMs": 3
+        }
+      ]
+    },
+    {
+      "id": "D-L05",
+      "status": "FAIL",
+      "actual": {
+        "probes": [
+          {
+            "targetSeconds": 29,
+            "observedSeconds": 29.04800009727478,
+            "http": 403
+          },
+          {
+            "targetSeconds": 30,
+            "observedSeconds": 30.045000076293945,
+            "http": 403
+          },
+          {
+            "targetSeconds": 31,
+            "observedSeconds": 31.045000076293945,
+            "http": 403
+          }
+        ],
+        "fixtureId": 78
+      },
+      "note": "Actual wall-clock probes on the same locked Mobile session; same duration defect as #71.",
+      "startedAt": "2026-10-18T04:50:01.546971+00:00",
+      "finishedAt": "2026-10-18T04:50:57.794828+00:00",
+      "screenshots": [
+        {
+          "path": "Supporting_Materials/Evidence/Mobile_Android/D-L05_29_30_31_second_probes.png",
+          "sha256": "eb9e92c545602b0c93fbdf0ac51da267b70e83fa49b0fae9b91e62c2db4f5ff1",
+          "ui": [
+            "EShop Mobile",
+            "EShop Mobile",
+            "Đăng nhập",
+            "Đăng nhập",
+            "Giỏ (0)",
+            "Giỏ (0)",
+            "Đăng Nhập",
+            "Username",
+            "mobile-1792299007-L05-4@example.test",
+            "Mật khẩu",
+            "•••••••••",
+            "Quên mật khẩu?",
+            "Quên mật khẩu?",
+            "Sign In",
+            "Sign In",
+            "Chưa có tài khoản? Đăng ký ngay",
+            "Chưa có tài khoản? Đăng ký ngay",
+            "Đăng nhập thất bại. Vui lòng kiểm tra lại.",
+            "Quay Lại",
+            "Quay Lại",
+            "© 2026 EShop SUT. Dành cho mục đích kiểm thử."
+          ],
+          "capturedAt": 1792299057.794829
+        }
+      ],
+      "steps": [
+        {
+          "action": "tap",
+          "target": "Đăng nhập"
+        },
+        {
+          "action": "type",
+          "fieldIndex": 0,
+          "value": "mobile-1792299007-L05-4@example.test"
+        },
+        {
+          "action": "type",
+          "fieldIndex": 1,
+          "value": "[redacted test credential]"
+        },
+        {
+          "action": "tap",
+          "target": "Sign In"
+        },
+        {
+          "action": "tap",
+          "target": "Sign In"
+        },
+        {
+          "action": "type",
+          "fieldIndex": 1,
+          "value": "[redacted test credential]"
+        }
+      ],
+      "network": [
+        {
+          "timestamp": "2026-10-18T04:50:05.048Z",
+          "userAgent": "okhttp/4.12.0",
+          "method": "GET",
+          "path": "/api/products?search=",
+          "caller": null,
+          "mutation": null,
+          "status": 304,
+          "response": "",
+          "durationMs": 3
+        },
+        {
+          "timestamp": "2026-10-18T04:50:20.451Z",
+          "userAgent": "okhttp/4.12.0",
+          "method": "POST",
+          "path": "/api/login",
+          "caller": null,
+          "request": {
+            "email": "mobile-1792299007-L05-4@example.test",
+            "password": "[redacted test credential]"
+          },
+          "mutation": null,
+          "status": 401,
+          "response": {
+            "error": "Invalid email or password"
+          },
+          "durationMs": 3
+        },
+        {
+          "timestamp": "2026-10-18T04:50:24.563Z",
+          "userAgent": "okhttp/4.12.0",
+          "method": "POST",
+          "path": "/api/login",
+          "caller": null,
+          "request": {
+            "email": "mobile-1792299007-L05-4@example.test",
+            "password": "[redacted test credential]"
+          },
+          "mutation": null,
+          "status": 401,
+          "response": {
+            "error": "Invalid email or password"
+          },
+          "durationMs": 2
+        },
+        {
+          "timestamp": "2026-10-18T04:50:53.611Z",
+          "userAgent": "okhttp/4.12.0",
+          "method": "POST",
+          "path": "/api/login",
+          "caller": null,
+          "request": {
+            "email": "mobile-1792299007-L05-4@example.test",
+            "password": "[redacted test credential]"
+          },
+          "mutation": null,
+          "status": 403,
+          "response": {
+            "error": "Tài khoản đã bị khóa. Vui lòng thử lại sau."
+          },
+          "durationMs": 2
+        },
+        {
+          "timestamp": "2026-10-18T04:50:54.608Z",
+          "userAgent": "okhttp/4.12.0",
+          "method": "POST",
+          "path": "/api/login",
+          "caller": null,
+          "request": {
+            "email": "mobile-1792299007-L05-4@example.test",
+            "password": "[redacted test credential]"
+          },
+          "mutation": null,
+          "status": 403,
+          "response": {
+            "error": "Tài khoản đã bị khóa. Vui lòng thử lại sau."
+          },
+          "durationMs": 1
+        },
+        {
+          "timestamp": "2026-10-18T04:50:55.608Z",
+          "userAgent": "okhttp/4.12.0",
+          "method": "POST",
+          "path": "/api/login",
+          "caller": null,
+          "request": {
+            "email": "mobile-1792299007-L05-4@example.test",
+            "password": "[redacted test credential]"
+          },
+          "mutation": null,
+          "status": 403,
+          "response": {
+            "error": "Tài khoản đã bị khóa. Vui lòng thử lại sau."
+          },
+          "durationMs": 2
+        }
+      ]
+    },
+    {
+      "id": "D-L06",
+      "status": "PASS",
+      "actual": {
+        "passwordAccessibilityFlag": "true",
+        "visibleValue": "•••••••••"
+      },
+      "note": "",
+      "startedAt": "2026-10-18T05:00:31.246972+00:00",
+      "finishedAt": "2026-10-18T05:00:52.606865+00:00",
+      "screenshots": [
+        {
+          "path": "Supporting_Materials/Evidence/Mobile_Android/D-L06_password_masked.png",
+          "sha256": "33c68551c92e01d3bacdfd81e19f95153389a9051908eb62e91289c42dfa8dc8",
+          "ui": [
+            "EShop Mobile",
+            "EShop Mobile",
+            "Đăng nhập",
+            "Đăng nhập",
+            "Giỏ (0)",
+            "Giỏ (0)",
+            "Đăng Nhập",
+            "Username",
+            "test@eshop.com",
+            "Mật khẩu",
+            "•••••••••",
+            "Quên mật khẩu?",
+            "Quên mật khẩu?",
+            "Sign In",
+            "Sign In",
+            "Chưa có tài khoản? Đăng ký ngay",
+            "Chưa có tài khoản? Đăng ký ngay",
+            "Quay Lại",
+            "Quay Lại",
+            "© 2026 EShop SUT. Dành cho mục đích kiểm thử."
+          ],
+          "capturedAt": 1792299652.6068654
+        }
+      ],
+      "steps": [
+        {
+          "action": "tap",
+          "target": "Đăng nhập"
+        },
+        {
+          "action": "type",
+          "fieldIndex": 0,
+          "value": "test@eshop.com"
+        },
+        {
+          "action": "type",
+          "fieldIndex": 1,
+          "value": "[redacted test credential]"
+        }
+      ],
+      "network": [
+        {
+          "timestamp": "2026-10-18T05:00:35.874Z",
+          "userAgent": "okhttp/4.12.0",
+          "method": "GET",
+          "path": "/api/products?search=",
+          "caller": null,
+          "mutation": null,
+          "status": 304,
+          "response": "",
+          "durationMs": 2
+        }
+      ]
+    },
+    {
+      "id": "D-L07",
+      "status": "OBSERVATION",
+      "actual": {
+        "bothInputsRejected": true,
+        "submittedToBackend": true
+      },
+      "note": "The native UI denies login but sends both requests. HTML type=email is not a native control; the SRS does not specify whether native preflight validation is mandatory. No unsupported new bug is filed.",
+      "startedAt": "2026-10-18T04:51:51.193820+00:00",
+      "finishedAt": "2026-10-18T04:52:22.764239+00:00",
+      "screenshots": [
+        {
+          "path": "Supporting_Materials/Evidence/Mobile_Android/D-L07_empty_email_rejected.png",
+          "sha256": "dab970a8473d6b8d9ed1f804afc36a1807ae260675114d1461f0a7eafb65199b",
+          "ui": [
+            "EShop Mobile",
+            "EShop Mobile",
+            "Đăng nhập",
+            "Đăng nhập",
+            "Giỏ (0)",
+            "Giỏ (0)",
+            "Đăng Nhập",
+            "Username",
+            "Email",
+            "Mật khẩu",
+            "•••••••••",
+            "Quên mật khẩu?",
+            "Quên mật khẩu?",
+            "Sign In",
+            "Sign In",
+            "Chưa có tài khoản? Đăng ký ngay",
+            "Chưa có tài khoản? Đăng ký ngay",
+            "Đăng nhập thất bại. Vui lòng kiểm tra lại.",
+            "Quay Lại",
+            "Quay Lại",
+            "© 2026 EShop SUT. Dành cho mục đích kiểm thử."
+          ],
+          "capturedAt": 1792299133.1709068
+        },
+        {
+          "path": "Supporting_Materials/Evidence/Mobile_Android/D-L07_malformed_email_rejected.png",
+          "sha256": "75f4936a8c480606fa48f442174319e68eb6fb5f7659e5acebbac028602e069e",
+          "ui": [
+            "EShop Mobile",
+            "EShop Mobile",
+            "Đăng nhập",
+            "Đăng nhập",
+            "Giỏ (0)",
+            "Giỏ (0)",
+            "Đăng Nhập",
+            "Username",
+            "invalid-email",
+            "Mật khẩu",
+            "•••••••••",
+            "Quên mật khẩu?",
+            "Quên mật khẩu?",
+            "Sign In",
+            "Sign In",
+            "Chưa có tài khoản? Đăng ký ngay",
+            "Chưa có tài khoản? Đăng ký ngay",
+            "Đăng nhập thất bại. Vui lòng kiểm tra lại.",
+            "Quay Lại",
+            "Quay Lại",
+            "© 2026 EShop SUT. Dành cho mục đích kiểm thử."
+          ],
+          "capturedAt": 1792299142.7642395
+        }
+      ],
+      "steps": [
+        {
+          "action": "tap",
+          "target": "Đăng nhập"
+        },
+        {
+          "action": "type",
+          "fieldIndex": 0,
+          "value": ""
+        },
+        {
+          "action": "type",
+          "fieldIndex": 1,
+          "value": "[redacted test credential]"
+        },
+        {
+          "action": "tap",
+          "target": "Sign In"
+        },
+        {
+          "action": "type",
+          "fieldIndex": 0,
+          "value": "invalid-email"
+        },
+        {
+          "action": "tap",
+          "target": "Sign In"
+        }
+      ],
+      "network": [
+        {
+          "timestamp": "2026-10-18T04:51:53.478Z",
+          "userAgent": "okhttp/4.12.0",
+          "method": "GET",
+          "path": "/api/products?search=",
+          "caller": null,
+          "mutation": null,
+          "status": 304,
+          "response": "",
+          "durationMs": 1
+        },
+        {
+          "timestamp": "2026-10-18T04:52:08.900Z",
+          "userAgent": "okhttp/4.12.0",
+          "method": "POST",
+          "path": "/api/login",
+          "caller": null,
+          "request": {
+            "email": "",
+            "password": "[redacted test credential]"
+          },
+          "mutation": null,
+          "status": 401,
+          "response": {
+            "error": "Invalid email or password"
+          },
+          "durationMs": 2
+        },
+        {
+          "timestamp": "2026-10-18T04:52:18.341Z",
+          "userAgent": "okhttp/4.12.0",
+          "method": "POST",
+          "path": "/api/login",
+          "caller": null,
+          "request": {
+            "email": "invalid-email",
+            "password": "[redacted test credential]"
+          },
+          "mutation": null,
+          "status": 401,
+          "response": {
+            "error": "Invalid email or password"
+          },
+          "durationMs": 3
+        }
+      ]
+    },
+    {
+      "id": "D-L08",
+      "status": "PASS",
+      "actual": {
+        "genericError": "Đăng nhập thất bại. Vui lòng kiểm tra lại.",
+        "accountDetailsExposed": false
+      },
+      "note": "",
+      "startedAt": "2026-10-18T05:00:52.625988+00:00",
+      "finishedAt": "2026-10-18T05:01:16.363565+00:00",
+      "screenshots": [
+        {
+          "path": "Supporting_Materials/Evidence/Mobile_Android/D-L08_generic_error.png",
+          "sha256": "ee7ec575e0c805fec2c1b963fea4032db34fbdc15a4434113bea5dead9df4da9",
+          "ui": [
+            "EShop Mobile",
+            "EShop Mobile",
+            "Đăng nhập",
+            "Đăng nhập",
+            "Giỏ (0)",
+            "Giỏ (0)",
+            "Đăng Nhập",
+            "Username",
+            "absent-mobile@example.test",
+            "Mật khẩu",
+            "••••••••••",
+            "Quên mật khẩu?",
+            "Quên mật khẩu?",
+            "Sign In",
+            "Sign In",
+            "Chưa có tài khoản? Đăng ký ngay",
+            "Chưa có tài khoản? Đăng ký ngay",
+            "Đăng nhập thất bại. Vui lòng kiểm tra lại.",
+            "Quay Lại",
+            "Quay Lại",
+            "© 2026 EShop SUT. Dành cho mục đích kiểm thử."
+          ],
+          "capturedAt": 1792299676.3635652
+        }
+      ],
+      "steps": [
+        {
+          "action": "tap",
+          "target": "Đăng nhập"
+        },
+        {
+          "action": "type",
+          "fieldIndex": 0,
+          "value": "absent-mobile@example.test"
+        },
+        {
+          "action": "type",
+          "fieldIndex": 1,
+          "value": "[redacted test credential]"
+        },
+        {
+          "action": "tap",
+          "target": "Sign In"
+        }
+      ],
+      "network": [
+        {
+          "timestamp": "2026-10-18T05:00:57.307Z",
+          "userAgent": "okhttp/4.12.0",
+          "method": "GET",
+          "path": "/api/products?search=",
+          "caller": null,
+          "mutation": null,
+          "status": 304,
+          "response": "",
+          "durationMs": 1
+        },
+        {
+          "timestamp": "2026-10-18T05:01:11.969Z",
+          "userAgent": "okhttp/4.12.0",
+          "method": "POST",
+          "path": "/api/login",
+          "caller": null,
+          "request": {
+            "email": "absent-mobile@example.test",
+            "password": "[redacted test credential]"
+          },
+          "mutation": null,
+          "status": 401,
+          "response": {
+            "error": "Invalid email or password"
+          },
+          "durationMs": 2
+        }
+      ]
+    },
+    {
+      "id": "D-C01",
+      "status": "PASS",
+      "actual": {
+        "order": {
+          "id": 24,
+          "total_amount": 30000000,
+          "status": "pending"
+        },
+        "fixtureId": 79
+      },
+      "note": "",
+      "startedAt": "2026-10-18T04:53:17.745072+00:00",
+      "finishedAt": "2026-10-18T04:54:04.232958+00:00",
+      "screenshots": [
+        {
+          "path": "Supporting_Materials/Evidence/Mobile_Android/D-C01_one_item_checkout.png",
+          "sha256": "4766ae8622e14b0dac221b1f31bc5f5fd68e78644a6cc3d427803214838b7d50",
+          "ui": [
+            "EShop Mobile",
+            "EShop Mobile",
+            "Chào, Mobile C01",
+            "Chào, Mobile C01",
+            "Giỏ (1)",
+            "Giỏ (1)",
+            "Xác Nhận Đơn Hàng",
+            "Sản phẩm:",
+            "• iPhone 15 Pro Max x 1 — 30,000,000 ₫",
+            "Tổng tiền thanh toán (VND):",
+            "30000000",
+            "Mã Giảm Giá",
+            "Nhập mã giảm giá...",
+            "Áp dụng",
+            "Áp dụng",
+            "Tổng thanh toán: 30,000,000 ₫",
+            "Xác Nhận Thanh Toán",
+            "Xác Nhận Thanh Toán",
+            "© 2026 EShop SUT. Dành cho mục đích kiểm thử."
+          ],
+          "capturedAt": 1792299235.6309888
+        },
+        {
+          "path": "Supporting_Materials/Evidence/Mobile_Android/D-C01_order_success.png",
+          "sha256": "eeab01689d0ecae4bfa5e4d850f5ae3e9ea593f4e92cc8f6ec466d479ad846d9",
+          "ui": [
+            "EShop Mobile",
+            "EShop Mobile",
+            "Chào, Mobile C01",
+            "Chào, Mobile C01",
+            "Giỏ (0)",
+            "Giỏ (0)",
+            "Thanh toán thành công!",
+            "Cảm ơn bạn đã mua sắm tại EShop.",
+            "Quay lại trang chủ",
+            "Quay lại trang chủ",
+            "© 2026 EShop SUT. Dành cho mục đích kiểm thử."
+          ],
+          "capturedAt": 1792299244.2319584
+        }
+      ],
+      "steps": [
+        {
+          "action": "tap",
+          "target": "Đăng nhập"
+        },
+        {
+          "action": "type",
+          "fieldIndex": 0,
+          "value": "mobile-1792299201-C01-5@example.test"
+        },
+        {
+          "action": "type",
+          "fieldIndex": 1,
+          "value": "[redacted test credential]"
+        },
+        {
+          "action": "tap",
+          "target": "Sign In"
+        },
+        {
+          "action": "tap",
+          "target": "Thêm vào giỏ"
+        },
+        {
+          "action": "tap",
+          "target": "OK"
+        },
+        {
+          "action": "tap",
+          "target": "Giỏ (1)"
+        },
+        {
+          "action": "tap",
+          "target": "Tiến hành thanh toán"
+        },
+        {
+          "action": "tap",
+          "target": "Xác Nhận Thanh Toán"
+        }
+      ],
+      "network": [
+        {
+          "timestamp": "2026-10-18T04:53:19.641Z",
+          "userAgent": "okhttp/4.12.0",
+          "method": "GET",
+          "path": "/api/products?search=",
+          "caller": null,
+          "mutation": null,
+          "status": 304,
+          "response": "",
+          "durationMs": 2
+        },
+        {
+          "timestamp": "2026-10-18T04:53:34.455Z",
+          "userAgent": "okhttp/4.12.0",
+          "method": "POST",
+          "path": "/api/login",
+          "caller": null,
+          "request": {
+            "email": "mobile-1792299201-C01-5@example.test",
+            "password": "[redacted test credential]"
+          },
+          "mutation": null,
+          "status": 200,
+          "response": {
+            "message": "Login successful",
+            "token": "[redacted test credential]",
+            "user": {
+              "id": 79,
+              "name": "Mobile C01",
+              "email": "mobile-1792299201-C01-5@example.test",
+              "password": "[redacted test credential]",
+              "role": "user",
+              "login_attempts": 0,
+              "locked_until": null,
+              "reset_token": null,
+              "shipping_address": null,
+              "phone": null
+            }
+          },
+          "durationMs": 3
+        },
+        {
+          "timestamp": "2026-10-18T04:53:34.502Z",
+          "userAgent": "okhttp/4.12.0",
+          "method": "GET",
+          "path": "/api/orders/my-orders",
+          "caller": {
+            "id": 79,
+            "role": "user"
+          },
+          "mutation": null,
+          "status": 304,
+          "response": "",
+          "durationMs": 2
+        },
+        {
+          "timestamp": "2026-10-18T04:53:59.970Z",
+          "userAgent": "okhttp/4.12.0",
+          "method": "POST",
+          "path": "/api/checkout",
+          "caller": {
+            "id": 79,
+            "role": "user"
+          },
+          "request": {
+            "items": [
+              {
+                "id": 1,
+                "name": "iPhone 15 Pro Max",
+                "price": 30000000,
+                "description": "Điện thoại cao cấp của Apple",
+                "imageUrl": "https://placehold.co/300x300/png?text=iPhone+15",
+                "category_id": 1,
+                "quantity": 1
+              }
+            ],
+            "total_amount": 30000000,
+            "coupon_id": null
+          },
+          "mutation": null,
+          "status": 200,
+          "response": {
+            "message": "Checkout successful",
+            "orderId": 24
+          },
+          "durationMs": 4
+        },
+        {
+          "timestamp": "2026-10-18T04:54:00.033Z",
+          "userAgent": "okhttp/4.12.0",
+          "method": "GET",
+          "path": "/api/orders/my-orders",
+          "caller": {
+            "id": 79,
+            "role": "user"
+          },
+          "mutation": null,
+          "status": 200,
+          "response": [
+            {
+              "id": 24,
+              "user_id": 79,
+              "total_amount": 30000000,
+              "status": "pending",
+              "shipping_address": null,
+              "created_at": "2026-10-18 04:53:59"
+            }
+          ],
+          "durationMs": 2
+        }
+      ]
+    },
+    {
+      "id": "D-C02",
+      "status": "FAIL",
+      "actual": {
+        "displayedItems": 2,
+        "sentItems": 1,
+        "sentPayload": {
+          "items": [
+            {
+              "id": 1,
+              "name": "iPhone 15 Pro Max",
+              "price": 30000000,
+              "description": "Điện thoại cao cấp của Apple",
+              "imageUrl": "https://placehold.co/300x300/png?text=iPhone+15",
+              "category_id": 1,
+              "quantity": 1
+            }
+          ],
+          "total_amount": 58000000,
+          "coupon_id": null
+        },
+        "http": 200,
+        "fixtureId": 97
+      },
+      "note": "Two visible items but the Mobile payload drops the final item.",
+      "startedAt": "2026-10-18T05:01:16.382150+00:00",
+      "finishedAt": "2026-10-18T05:02:24.459988+00:00",
+      "screenshots": [
+        {
+          "path": "Supporting_Materials/Evidence/Mobile_Android/D-C02_two_items_before_submit.png",
+          "sha256": "5427d8571bc287c919320ae35f8e1cca74adc459c67f27a55511a754326fff23",
+          "ui": [
+            "EShop Mobile",
+            "EShop Mobile",
+            "Chào, Mobile C02",
+            "Chào, Mobile C02",
+            "Giỏ (2)",
+            "Giỏ (2)",
+            "Xác Nhận Đơn Hàng",
+            "Sản phẩm:",
+            "• iPhone 15 Pro Max x 1 — 30,000,000 ₫",
+            "• Samsung Galaxy S24 Ultra x 1 — 28,000,000 ₫",
+            "Tổng tiền thanh toán (VND):",
+            "58000000",
+            "Mã Giảm Giá",
+            "Nhập mã giảm giá...",
+            "Áp dụng",
+            "Áp dụng",
+            "Tổng thanh toán: 58,000,000 ₫",
+            "Xác Nhận Thanh Toán",
+            "Xác Nhận Thanh Toán",
+            "© 2026 EShop SUT. Dành cho mục đích kiểm thử."
+          ],
+          "capturedAt": 1792299734.9185283
+        },
+        {
+          "path": "Supporting_Materials/Evidence/Mobile_Android/D-C02_success_after_two_item_submit.png",
+          "sha256": "4de0d84d298b02cc82da6b1b37b49192f2692593ec0fa0f6fbce1f364965685d",
+          "ui": [
+            "EShop Mobile",
+            "EShop Mobile",
+            "Chào, Mobile C02",
+            "Chào, Mobile C02",
+            "Giỏ (0)",
+            "Giỏ (0)",
+            "Thanh toán thành công!",
+            "Cảm ơn bạn đã mua sắm tại EShop.",
+            "Quay lại trang chủ",
+            "Quay lại trang chủ",
+            "© 2026 EShop SUT. Dành cho mục đích kiểm thử."
+          ],
+          "capturedAt": 1792299744.4462574
+        }
+      ],
+      "steps": [
+        {
+          "action": "tap",
+          "target": "Đăng nhập"
+        },
+        {
+          "action": "type",
+          "fieldIndex": 0,
+          "value": "mobile-1792299683-C02-2@example.test"
+        },
+        {
+          "action": "type",
+          "fieldIndex": 1,
+          "value": "[redacted test credential]"
+        },
+        {
+          "action": "tap",
+          "target": "Sign In"
+        },
+        {
+          "action": "tap",
+          "target": "Thêm vào giỏ"
+        },
+        {
+          "action": "tap",
+          "target": "OK"
+        },
+        {
+          "action": "type",
+          "fieldIndex": 0,
+          "value": "Samsung"
+        },
+        {
+          "action": "tap",
+          "target": "Tìm"
+        },
+        {
+          "action": "tap",
+          "target": "Thêm vào giỏ"
+        },
+        {
+          "action": "tap",
+          "target": "OK"
+        },
+        {
+          "action": "tap",
+          "target": "Giỏ (2)"
+        },
+        {
+          "action": "tap",
+          "target": "Tiến hành thanh toán"
+        },
+        {
+          "action": "tap",
+          "target": "Xác Nhận Thanh Toán"
+        }
+      ],
+      "network": [
+        {
+          "timestamp": "2026-10-18T05:01:21.276Z",
+          "userAgent": "okhttp/4.12.0",
+          "method": "GET",
+          "path": "/api/products?search=",
+          "caller": null,
+          "mutation": null,
+          "status": 304,
+          "response": "",
+          "durationMs": 4
+        },
+        {
+          "timestamp": "2026-10-18T05:01:36.799Z",
+          "userAgent": "okhttp/4.12.0",
+          "method": "POST",
+          "path": "/api/login",
+          "caller": null,
+          "request": {
+            "email": "mobile-1792299683-C02-2@example.test",
+            "password": "[redacted test credential]"
+          },
+          "mutation": null,
+          "status": 200,
+          "response": {
+            "message": "Login successful",
+            "token": "[redacted test credential]",
+            "user": {
+              "id": 97,
+              "name": "Mobile C02",
+              "email": "mobile-1792299683-C02-2@example.test",
+              "password": "[redacted test credential]",
+              "role": "user",
+              "login_attempts": 0,
+              "locked_until": null,
+              "reset_token": null,
+              "shipping_address": null,
+              "phone": null
+            }
+          },
+          "durationMs": 3
+        },
+        {
+          "timestamp": "2026-10-18T05:01:36.863Z",
+          "userAgent": "okhttp/4.12.0",
+          "method": "GET",
+          "path": "/api/orders/my-orders",
+          "caller": {
+            "id": 97,
+            "role": "user"
+          },
+          "mutation": null,
+          "status": 304,
+          "response": "",
+          "durationMs": 2
+        },
+        {
+          "timestamp": "2026-10-18T05:01:51.808Z",
+          "userAgent": "okhttp/4.12.0",
+          "method": "GET",
+          "path": "/api/products?search=Samsung",
+          "caller": null,
+          "mutation": null,
+          "status": 304,
+          "response": "",
+          "durationMs": 2
+        },
+        {
+          "timestamp": "2026-10-18T05:02:19.680Z",
+          "userAgent": "okhttp/4.12.0",
+          "method": "POST",
+          "path": "/api/checkout",
+          "caller": {
+            "id": 97,
+            "role": "user"
+          },
+          "request": {
+            "items": [
+              {
+                "id": 1,
+                "name": "iPhone 15 Pro Max",
+                "price": 30000000,
+                "description": "Điện thoại cao cấp của Apple",
+                "imageUrl": "https://placehold.co/300x300/png?text=iPhone+15",
+                "category_id": 1,
+                "quantity": 1
+              }
+            ],
+            "total_amount": 58000000,
+            "coupon_id": null
+          },
+          "mutation": null,
+          "status": 200,
+          "response": {
+            "message": "Checkout successful",
+            "orderId": 26
+          },
+          "durationMs": 4
+        },
+        {
+          "timestamp": "2026-10-18T05:02:19.749Z",
+          "userAgent": "okhttp/4.12.0",
+          "method": "GET",
+          "path": "/api/orders/my-orders",
+          "caller": {
+            "id": 97,
+            "role": "user"
+          },
+          "mutation": null,
+          "status": 200,
+          "response": [
+            {
+              "id": 26,
+              "user_id": 97,
+              "total_amount": 58000000,
+              "status": "pending",
+              "shipping_address": null,
+              "created_at": "2026-10-18 05:02:19"
+            }
+          ],
+          "durationMs": 2
+        }
+      ]
+    },
+    {
+      "id": "D-C03",
+      "status": "PASS",
+      "actual": {
+        "originalTotal": "30000000",
+        "sameTotalAfterTyping": true,
+        "targetEnabled": "false",
+        "targetFocusable": "true"
+      },
+      "note": "",
+      "startedAt": "2026-10-18T05:02:24.474716+00:00",
+      "finishedAt": "2026-10-18T05:03:14.519892+00:00",
+      "screenshots": [
+        {
+          "path": "Supporting_Materials/Evidence/Mobile_Android/D-C03_total_not_editable.png",
+          "sha256": "f50f7b2089f9cd14c854a44fdb25dc5f21a952931316b60ab12031c0135d4721",
+          "ui": [
+            "EShop Mobile",
+            "EShop Mobile",
+            "Chào, Mobile C03",
+            "Chào, Mobile C03",
+            "Giỏ (1)",
+            "Giỏ (1)",
+            "Xác Nhận Đơn Hàng",
+            "Sản phẩm:",
+            "• iPhone 15 Pro Max x 1 — 30,000,000 ₫",
+            "Tổng tiền thanh toán (VND):",
+            "30000000",
+            "Mã Giảm Giá",
+            "Nhập mã giảm giá...",
+            "Áp dụng",
+            "Áp dụng",
+            "Tổng thanh toán: 30,000,000 ₫",
+            "Xác Nhận Thanh Toán",
+            "Xác Nhận Thanh Toán",
+            "© 2026 EShop SUT. Dành cho mục đích kiểm thử."
+          ],
+          "capturedAt": 1792299794.5198922
+        }
+      ],
+      "steps": [
+        {
+          "action": "tap",
+          "target": "Đăng nhập"
+        },
+        {
+          "action": "type",
+          "fieldIndex": 0,
+          "value": "mobile-1792299756-C03-3@example.test"
+        },
+        {
+          "action": "type",
+          "fieldIndex": 1,
+          "value": "[redacted test credential]"
+        },
+        {
+          "action": "tap",
+          "target": "Sign In"
+        },
+        {
+          "action": "tap",
+          "target": "Thêm vào giỏ"
+        },
+        {
+          "action": "tap",
+          "target": "OK"
+        },
+        {
+          "action": "tap",
+          "target": "Giỏ (1)"
+        },
+        {
+          "action": "tap",
+          "target": "Tiến hành thanh toán"
+        }
+      ],
+      "network": [
+        {
+          "timestamp": "2026-10-18T05:02:33.002Z",
+          "userAgent": "okhttp/4.12.0",
+          "method": "GET",
+          "path": "/api/products?search=",
+          "caller": null,
+          "mutation": null,
+          "status": 304,
+          "response": "",
+          "durationMs": 4
+        },
+        {
+          "timestamp": "2026-10-18T05:02:49.447Z",
+          "userAgent": "okhttp/4.12.0",
+          "method": "POST",
+          "path": "/api/login",
+          "caller": null,
+          "request": {
+            "email": "mobile-1792299756-C03-3@example.test",
+            "password": "[redacted test credential]"
+          },
+          "mutation": null,
+          "status": 200,
+          "response": {
+            "message": "Login successful",
+            "token": "[redacted test credential]",
+            "user": {
+              "id": 98,
+              "name": "Mobile C03",
+              "email": "mobile-1792299756-C03-3@example.test",
+              "password": "[redacted test credential]",
+              "role": "user",
+              "login_attempts": 0,
+              "locked_until": null,
+              "reset_token": null,
+              "shipping_address": null,
+              "phone": null
+            }
+          },
+          "durationMs": 2
+        },
+        {
+          "timestamp": "2026-10-18T05:02:49.490Z",
+          "userAgent": "okhttp/4.12.0",
+          "method": "GET",
+          "path": "/api/orders/my-orders",
+          "caller": {
+            "id": 98,
+            "role": "user"
+          },
+          "mutation": null,
+          "status": 200,
+          "response": [],
+          "durationMs": 2
+        }
+      ]
+    },
+    {
+      "id": "D-C04",
+      "status": "FAIL",
+      "actual": {
+        "controlledMutation": {
+          "originalTotal": 30000000,
+          "sentTotal": 1
+        },
+        "http": 200,
+        "storedOrder": {
+          "id": 25,
+          "total_amount": 1
+        },
+        "fixtureId": 92
+      },
+      "note": "One explicitly declared network total-tampering experiment; default proxy mode is transparent. Same root cause as #72.",
+      "startedAt": "2026-10-18T04:55:40.753252+00:00",
+      "finishedAt": "2026-10-18T04:56:27.034998+00:00",
+      "screenshots": [
+        {
+          "path": "Supporting_Materials/Evidence/Mobile_Android/D-C04_correct_total_before_tampering.png",
+          "sha256": "12724e37057c828408db2568c231ffbe1b7259f4cb85d8f4446613e336d8baab",
+          "ui": [
+            "EShop Mobile",
+            "EShop Mobile",
+            "Chào, Mobile C04",
+            "Chào, Mobile C04",
+            "Giỏ (1)",
+            "Giỏ (1)",
+            "Xác Nhận Đơn Hàng",
+            "Sản phẩm:",
+            "• iPhone 15 Pro Max x 1 — 30,000,000 ₫",
+            "Tổng tiền thanh toán (VND):",
+            "30000000",
+            "Mã Giảm Giá",
+            "Nhập mã giảm giá...",
+            "Áp dụng",
+            "Áp dụng",
+            "Tổng thanh toán: 30,000,000 ₫",
+            "Xác Nhận Thanh Toán",
+            "Xác Nhận Thanh Toán",
+            "© 2026 EShop SUT. Dành cho mục đích kiểm thử."
+          ],
+          "capturedAt": 1792299378.7056754
+        },
+        {
+          "path": "Supporting_Materials/Evidence/Mobile_Android/D-C04_server_accepts_tampered_total.png",
+          "sha256": "50448864091144c292e97624f421d0cd9315e16f32a2184e2855672e53b13d91",
+          "ui": [
+            "EShop Mobile",
+            "EShop Mobile",
+            "Chào, Mobile C04",
+            "Chào, Mobile C04",
+            "Giỏ (0)",
+            "Giỏ (0)",
+            "Thanh toán thành công!",
+            "Cảm ơn bạn đã mua sắm tại EShop.",
+            "Quay lại trang chủ",
+            "Quay lại trang chủ",
+            "© 2026 EShop SUT. Dành cho mục đích kiểm thử."
+          ],
+          "capturedAt": 1792299387.02146
+        }
+      ],
+      "steps": [
+        {
+          "action": "tap",
+          "target": "Đăng nhập"
+        },
+        {
+          "action": "type",
+          "fieldIndex": 0,
+          "value": "mobile-1792299345-C04-7@example.test"
+        },
+        {
+          "action": "type",
+          "fieldIndex": 1,
+          "value": "[redacted test credential]"
+        },
+        {
+          "action": "tap",
+          "target": "Sign In"
+        },
+        {
+          "action": "tap",
+          "target": "Thêm vào giỏ"
+        },
+        {
+          "action": "tap",
+          "target": "OK"
+        },
+        {
+          "action": "tap",
+          "target": "Giỏ (1)"
+        },
+        {
+          "action": "tap",
+          "target": "Tiến hành thanh toán"
+        },
+        {
+          "action": "tap",
+          "target": "Xác Nhận Thanh Toán"
+        }
+      ],
+      "network": [
+        {
+          "timestamp": "2026-10-18T04:55:43.027Z",
+          "userAgent": "okhttp/4.12.0",
+          "method": "GET",
+          "path": "/api/products?search=",
+          "caller": null,
+          "mutation": null,
+          "status": 304,
+          "response": "",
+          "durationMs": 2
+        },
+        {
+          "timestamp": "2026-10-18T04:55:57.910Z",
+          "userAgent": "okhttp/4.12.0",
+          "method": "POST",
+          "path": "/api/login",
+          "caller": null,
+          "request": {
+            "email": "mobile-1792299345-C04-7@example.test",
+            "password": "[redacted test credential]"
+          },
+          "mutation": null,
+          "status": 200,
+          "response": {
+            "message": "Login successful",
+            "token": "[redacted test credential]",
+            "user": {
+              "id": 92,
+              "name": "Mobile C04",
+              "email": "mobile-1792299345-C04-7@example.test",
+              "password": "[redacted test credential]",
+              "role": "user",
+              "login_attempts": 0,
+              "locked_until": null,
+              "reset_token": null,
+              "shipping_address": null,
+              "phone": null
+            }
+          },
+          "durationMs": 2
+        },
+        {
+          "timestamp": "2026-10-18T04:55:57.954Z",
+          "userAgent": "okhttp/4.12.0",
+          "method": "GET",
+          "path": "/api/orders/my-orders",
+          "caller": {
+            "id": 92,
+            "role": "user"
+          },
+          "mutation": null,
+          "status": 304,
+          "response": "",
+          "durationMs": 1
+        },
+        {
+          "timestamp": "2026-10-18T04:56:22.831Z",
+          "userAgent": "okhttp/4.12.0",
+          "method": "POST",
+          "path": "/api/checkout",
+          "caller": {
+            "id": 92,
+            "role": "user"
+          },
+          "request": {
+            "items": [
+              {
+                "id": 1,
+                "name": "iPhone 15 Pro Max",
+                "price": 30000000,
+                "description": "Điện thoại cao cấp của Apple",
+                "imageUrl": "https://placehold.co/300x300/png?text=iPhone+15",
+                "category_id": 1,
+                "quantity": 1
+              }
+            ],
+            "total_amount": 1,
+            "coupon_id": null
+          },
+          "mutation": {
+            "originalTotal": 30000000,
+            "sentTotal": 1
+          },
+          "status": 200,
+          "response": {
+            "message": "Checkout successful",
+            "orderId": 25
+          },
+          "durationMs": 3
+        },
+        {
+          "timestamp": "2026-10-18T04:56:22.885Z",
+          "userAgent": "okhttp/4.12.0",
+          "method": "GET",
+          "path": "/api/orders/my-orders",
+          "caller": {
+            "id": 92,
+            "role": "user"
+          },
+          "mutation": null,
+          "status": 200,
+          "response": [
+            {
+              "id": 25,
+              "user_id": 92,
+              "total_amount": 1,
+              "status": "pending",
+              "shipping_address": null,
+              "created_at": "2026-10-18 04:56:22"
+            }
+          ],
+          "durationMs": 1
+        }
+      ]
+    },
+    {
+      "id": "D-C05",
+      "status": "PASS",
+      "actual": {
+        "successShown": true,
+        "localCartCount": 0,
+        "emptyStateShown": true
+      },
+      "note": "",
+      "startedAt": "2026-10-18T05:03:14.536490+00:00",
+      "finishedAt": "2026-10-18T05:04:07.766623+00:00",
+      "screenshots": [
+        {
+          "path": "Supporting_Materials/Evidence/Mobile_Android/D-C05_success_and_zero_cart_badge.png",
+          "sha256": "5581ad8a48c2464f2887079dd0d3990e2099be77c0aa3af02f4835ed238c25ae",
+          "ui": [
+            "EShop Mobile",
+            "EShop Mobile",
+            "Chào, Mobile C05",
+            "Chào, Mobile C05",
+            "Giỏ (0)",
+            "Giỏ (0)",
+            "Thanh toán thành công!",
+            "Cảm ơn bạn đã mua sắm tại EShop.",
+            "Quay lại trang chủ",
+            "Quay lại trang chủ",
+            "© 2026 EShop SUT. Dành cho mục đích kiểm thử."
+          ],
+          "capturedAt": 1792299841.5167978
+        },
+        {
+          "path": "Supporting_Materials/Evidence/Mobile_Android/D-C05_empty_cart_after_checkout.png",
+          "sha256": "1baba185edefe811be4616f4c32cc3aa7afc837fcfd16229d0173e805b7b6920",
+          "ui": [
+            "EShop Mobile",
+            "EShop Mobile",
+            "Chào, Mobile C05",
+            "Chào, Mobile C05",
+            "Giỏ (0)",
+            "Giỏ (0)",
+            "Giỏ Hàng",
+            "Giỏ hàng của bạn đang trống",
+            "Tiếp tục mua sắm",
+            "Tiếp tục mua sắm",
+            "© 2026 EShop SUT. Dành cho mục đích kiểm thử."
+          ],
+          "capturedAt": 1792299847.7666237
+        }
+      ],
+      "steps": [
+        {
+          "action": "tap",
+          "target": "Đăng nhập"
+        },
+        {
+          "action": "type",
+          "fieldIndex": 0,
+          "value": "mobile-1792299801-C05-4@example.test"
+        },
+        {
+          "action": "type",
+          "fieldIndex": 1,
+          "value": "[redacted test credential]"
+        },
+        {
+          "action": "tap",
+          "target": "Sign In"
+        },
+        {
+          "action": "tap",
+          "target": "Thêm vào giỏ"
+        },
+        {
+          "action": "tap",
+          "target": "OK"
+        },
+        {
+          "action": "tap",
+          "target": "Giỏ (1)"
+        },
+        {
+          "action": "tap",
+          "target": "Tiến hành thanh toán"
+        },
+        {
+          "action": "tap",
+          "target": "Xác Nhận Thanh Toán"
+        },
+        {
+          "action": "tap",
+          "target": "Giỏ (0)"
+        }
+      ],
+      "network": [
+        {
+          "timestamp": "2026-10-18T05:03:19.623Z",
+          "userAgent": "okhttp/4.12.0",
+          "method": "GET",
+          "path": "/api/products?search=",
+          "caller": null,
+          "mutation": null,
+          "status": 304,
+          "response": "",
+          "durationMs": 2
+        },
+        {
+          "timestamp": "2026-10-18T05:03:34.367Z",
+          "userAgent": "okhttp/4.12.0",
+          "method": "POST",
+          "path": "/api/login",
+          "caller": null,
+          "request": {
+            "email": "mobile-1792299801-C05-4@example.test",
+            "password": "[redacted test credential]"
+          },
+          "mutation": null,
+          "status": 200,
+          "response": {
+            "message": "Login successful",
+            "token": "[redacted test credential]",
+            "user": {
+              "id": 99,
+              "name": "Mobile C05",
+              "email": "mobile-1792299801-C05-4@example.test",
+              "password": "[redacted test credential]",
+              "role": "user",
+              "login_attempts": 0,
+              "locked_until": null,
+              "reset_token": null,
+              "shipping_address": null,
+              "phone": null
+            }
+          },
+          "durationMs": 1
+        },
+        {
+          "timestamp": "2026-10-18T05:03:34.420Z",
+          "userAgent": "okhttp/4.12.0",
+          "method": "GET",
+          "path": "/api/orders/my-orders",
+          "caller": {
+            "id": 99,
+            "role": "user"
+          },
+          "mutation": null,
+          "status": 304,
+          "response": "",
+          "durationMs": 2
+        },
+        {
+          "timestamp": "2026-10-18T05:03:57.318Z",
+          "userAgent": "okhttp/4.12.0",
+          "method": "POST",
+          "path": "/api/checkout",
+          "caller": {
+            "id": 99,
+            "role": "user"
+          },
+          "request": {
+            "items": [
+              {
+                "id": 1,
+                "name": "iPhone 15 Pro Max",
+                "price": 30000000,
+                "description": "Điện thoại cao cấp của Apple",
+                "imageUrl": "https://placehold.co/300x300/png?text=iPhone+15",
+                "category_id": 1,
+                "quantity": 1
+              }
+            ],
+            "total_amount": 30000000,
+            "coupon_id": null
+          },
+          "mutation": null,
+          "status": 200,
+          "response": {
+            "message": "Checkout successful",
+            "orderId": 27
+          },
+          "durationMs": 4
+        },
+        {
+          "timestamp": "2026-10-18T05:03:57.342Z",
+          "userAgent": "okhttp/4.12.0",
+          "method": "GET",
+          "path": "/api/orders/my-orders",
+          "caller": {
+            "id": 99,
+            "role": "user"
+          },
+          "mutation": null,
+          "status": 200,
+          "response": [
+            {
+              "id": 27,
+              "user_id": 99,
+              "total_amount": 30000000,
+              "status": "pending",
+              "shipping_address": null,
+              "created_at": "2026-10-18 05:03:57"
+            }
+          ],
+          "durationMs": 2
+        }
+      ]
+    },
+    {
+      "id": "D-C06",
+      "status": "PASS",
+      "actual": {
+        "redirectedToLogin": true,
+        "checkoutRequests": 0
+      },
+      "note": "",
+      "startedAt": "2026-10-18T04:57:20.712162+00:00",
+      "finishedAt": "2026-10-18T04:57:50.125042+00:00",
+      "screenshots": [
+        {
+          "path": "Supporting_Materials/Evidence/Mobile_Android/D-C06_guest_authentication_alert.png",
+          "sha256": "8a23ef85567385f3bdadd48f105930d37bd570dd07082c5d9cd3d14c332ec846",
+          "ui": [
+            "Bạn cần đăng nhập để thanh toán!",
+            "OK"
+          ],
+          "capturedAt": 1792299463.8324683
+        },
+        {
+          "path": "Supporting_Materials/Evidence/Mobile_Android/D-C06_guest_redirected_to_login.png",
+          "sha256": "6fb5dc5306b1df14b0a74a9ef95460123a06bd77c9b6c882d960e05023be066e",
+          "ui": [
+            "EShop Mobile",
+            "EShop Mobile",
+            "Đăng nhập",
+            "Đăng nhập",
+            "Giỏ (1)",
+            "Giỏ (1)",
+            "Đăng Nhập",
+            "Username",
+            "Email",
+            "Mật khẩu",
+            "Mật khẩu",
+            "Quên mật khẩu?",
+            "Quên mật khẩu?",
+            "Sign In",
+            "Sign In",
+            "Chưa có tài khoản? Đăng ký ngay",
+            "Chưa có tài khoản? Đăng ký ngay",
+            "Quay Lại",
+            "Quay Lại",
+            "© 2026 EShop SUT. Dành cho mục đích kiểm thử."
+          ],
+          "capturedAt": 1792299470.123028
+        }
+      ],
+      "steps": [
+        {
+          "action": "tap",
+          "target": "Thêm vào giỏ"
+        },
+        {
+          "action": "tap",
+          "target": "OK"
+        },
+        {
+          "action": "tap",
+          "target": "Giỏ (1)"
+        },
+        {
+          "action": "tap",
+          "target": "Tiến hành thanh toán"
+        },
+        {
+          "action": "tap",
+          "target": "OK"
+        }
+      ],
+      "network": [
+        {
+          "timestamp": "2026-10-18T04:57:22.826Z",
+          "userAgent": "okhttp/4.12.0",
+          "method": "GET",
+          "path": "/api/products?search=",
+          "caller": null,
+          "mutation": null,
+          "status": 304,
+          "response": "",
+          "durationMs": 2
+        }
+      ]
+    },
+    {
+      "id": "D-C07",
+      "status": "OBSERVATION",
+      "actual": {
+        "emptyCartVisible": true,
+        "checkoutActionNotShown": true
+      },
+      "note": "No explicit empty-cart acceptance oracle; actual native behavior recorded.",
+      "startedAt": "2026-10-18T05:04:07.780482+00:00",
+      "finishedAt": "2026-10-18T05:04:37.233535+00:00",
+      "screenshots": [
+        {
+          "path": "Supporting_Materials/Evidence/Mobile_Android/D-C07_empty_cart_no_checkout_action.png",
+          "sha256": "d40ebb41ff728aa37ba6bcd11426d6dda13201fc67d37ca942f511bf1df0b1c8",
+          "ui": [
+            "EShop Mobile",
+            "EShop Mobile",
+            "Chào, Mobile C07",
+            "Chào, Mobile C07",
+            "Giỏ (0)",
+            "Giỏ (0)",
+            "Giỏ Hàng",
+            "Giỏ hàng của bạn đang trống",
+            "Tiếp tục mua sắm",
+            "Tiếp tục mua sắm",
+            "© 2026 EShop SUT. Dành cho mục đích kiểm thử."
+          ],
+          "capturedAt": 1792299877.2335353
+        }
+      ],
+      "steps": [
+        {
+          "action": "tap",
+          "target": "Đăng nhập"
+        },
+        {
+          "action": "type",
+          "fieldIndex": 0,
+          "value": "mobile-1792299856-C07-5@example.test"
+        },
+        {
+          "action": "type",
+          "fieldIndex": 1,
+          "value": "[redacted test credential]"
+        },
+        {
+          "action": "tap",
+          "target": "Sign In"
+        },
+        {
+          "action": "tap",
+          "target": "Giỏ (0)"
+        }
+      ],
+      "network": [
+        {
+          "timestamp": "2026-10-18T05:04:14.231Z",
+          "userAgent": "okhttp/4.12.0",
+          "method": "GET",
+          "path": "/api/products?search=",
+          "caller": null,
+          "mutation": null,
+          "status": 304,
+          "response": "",
+          "durationMs": 2
+        },
+        {
+          "timestamp": "2026-10-18T05:04:28.916Z",
+          "userAgent": "okhttp/4.12.0",
+          "method": "POST",
+          "path": "/api/login",
+          "caller": null,
+          "request": {
+            "email": "mobile-1792299856-C07-5@example.test",
+            "password": "[redacted test credential]"
+          },
+          "mutation": null,
+          "status": 200,
+          "response": {
+            "message": "Login successful",
+            "token": "[redacted test credential]",
+            "user": {
+              "id": 100,
+              "name": "Mobile C07",
+              "email": "mobile-1792299856-C07-5@example.test",
+              "password": "[redacted test credential]",
+              "role": "user",
+              "login_attempts": 0,
+              "locked_until": null,
+              "reset_token": null,
+              "shipping_address": null,
+              "phone": null
+            }
+          },
+          "durationMs": 2
+        },
+        {
+          "timestamp": "2026-10-18T05:04:28.956Z",
+          "userAgent": "okhttp/4.12.0",
+          "method": "GET",
+          "path": "/api/orders/my-orders",
+          "caller": {
+            "id": 100,
+            "role": "user"
+          },
+          "mutation": null,
+          "status": 200,
+          "response": [],
+          "durationMs": 1
+        }
+      ]
+    },
+    {
+      "id": "D-C08",
+      "status": "PASS",
+      "actual": {
+        "twoProductNamesVisible": true,
+        "expectedTotal": 58000000,
+        "totalVisible": true
+      },
+      "note": "This case checks displayed rows and sum. The distinct payload omission is checked in D-C02.",
+      "startedAt": "2026-10-18T04:58:45.088364+00:00",
+      "finishedAt": "2026-10-18T04:59:37.608776+00:00",
+      "screenshots": [
+        {
+          "path": "Supporting_Materials/Evidence/Mobile_Android/D-C08_two_rows_and_sum.png",
+          "sha256": "09ce8a22c6f63fa8093473555200adfdf63258fdfd9d32c36e94e99ab18b2b86",
+          "ui": [
+            "EShop Mobile",
+            "EShop Mobile",
+            "Chào, Mobile C08",
+            "Chào, Mobile C08",
+            "Giỏ (2)",
+            "Giỏ (2)",
+            "Xác Nhận Đơn Hàng",
+            "Sản phẩm:",
+            "• iPhone 15 Pro Max x 1 — 30,000,000 ₫",
+            "• Samsung Galaxy S24 Ultra x 1 — 28,000,000 ₫",
+            "Tổng tiền thanh toán (VND):",
+            "58000000",
+            "Mã Giảm Giá",
+            "Nhập mã giảm giá...",
+            "Áp dụng",
+            "Áp dụng",
+            "Tổng thanh toán: 58,000,000 ₫",
+            "Xác Nhận Thanh Toán",
+            "Xác Nhận Thanh Toán",
+            "© 2026 EShop SUT. Dành cho mục đích kiểm thử."
+          ],
+          "capturedAt": 1792299577.6087768
+        }
+      ],
+      "steps": [
+        {
+          "action": "tap",
+          "target": "Đăng nhập"
+        },
+        {
+          "action": "type",
+          "fieldIndex": 0,
+          "value": "mobile-1792299530-C08-8@example.test"
+        },
+        {
+          "action": "type",
+          "fieldIndex": 1,
+          "value": "[redacted test credential]"
+        },
+        {
+          "action": "tap",
+          "target": "Sign In"
+        },
+        {
+          "action": "tap",
+          "target": "Thêm vào giỏ"
+        },
+        {
+          "action": "tap",
+          "target": "OK"
+        },
+        {
+          "action": "type",
+          "fieldIndex": 0,
+          "value": "Samsung"
+        },
+        {
+          "action": "tap",
+          "target": "Tìm"
+        },
+        {
+          "action": "tap",
+          "target": "Thêm vào giỏ"
+        },
+        {
+          "action": "tap",
+          "target": "OK"
+        },
+        {
+          "action": "tap",
+          "target": "Giỏ (2)"
+        },
+        {
+          "action": "tap",
+          "target": "Tiến hành thanh toán"
+        }
+      ],
+      "network": [
+        {
+          "timestamp": "2026-10-18T04:58:47.369Z",
+          "userAgent": "okhttp/4.12.0",
+          "method": "GET",
+          "path": "/api/products?search=",
+          "caller": null,
+          "mutation": null,
+          "status": 304,
+          "response": "",
+          "durationMs": 2
+        },
+        {
+          "timestamp": "2026-10-18T04:59:03.343Z",
+          "userAgent": "okhttp/4.12.0",
+          "method": "POST",
+          "path": "/api/login",
+          "caller": null,
+          "request": {
+            "email": "mobile-1792299530-C08-8@example.test",
+            "password": "[redacted test credential]"
+          },
+          "mutation": null,
+          "status": 200,
+          "response": {
+            "message": "Login successful",
+            "token": "[redacted test credential]",
+            "user": {
+              "id": 95,
+              "name": "Mobile C08",
+              "email": "mobile-1792299530-C08-8@example.test",
+              "password": "[redacted test credential]",
+              "role": "user",
+              "login_attempts": 0,
+              "locked_until": null,
+              "reset_token": null,
+              "shipping_address": null,
+              "phone": null
+            }
+          },
+          "durationMs": 3
+        },
+        {
+          "timestamp": "2026-10-18T04:59:03.390Z",
+          "userAgent": "okhttp/4.12.0",
+          "method": "GET",
+          "path": "/api/orders/my-orders",
+          "caller": {
+            "id": 95,
+            "role": "user"
+          },
+          "mutation": null,
+          "status": 200,
+          "response": [],
+          "durationMs": 1
+        },
+        {
+          "timestamp": "2026-10-18T04:59:16.811Z",
+          "userAgent": "okhttp/4.12.0",
+          "method": "GET",
+          "path": "/api/products?search=Samsung",
+          "caller": null,
+          "mutation": null,
+          "status": 200,
+          "response": [
+            {
+              "id": 2,
+              "name": "Samsung Galaxy S24 Ultra",
+              "price": 28000000,
+              "description": "Màn hình hiển thị xuất sắc, camera siêu zoom",
+              "imageUrl": "https://placehold.co/300x300/png?text=Samsung+S24",
+              "category_id": 1
+            }
+          ],
+          "durationMs": 3
+        }
+      ]
+    }
+  ],
+  "finishedAt": "2026-10-18T05:04:37.251574+00:00",
+  "supersededAttempts": [
+    {
+      "id": "D-L04",
+      "status": "ERROR",
+      "actual": {
+        "error": "Mobile project did not open: ['At a glance', 'Sun, Oct 18', 'Play Store', 'Gmail', 'Photos', 'YouTube', 'Home', 'Phone', 'Messages', 'Chrome', 'Expo Go', 'Google search', 'Google app', 'Voice search', 'Google Lens']"
+      },
+      "startedAt": "2026-10-18T04:49:07.267960+00:00",
+      "finishedAt": "2026-10-18T04:50:01.545970+00:00",
+      "reason": "Automation project launch / stale IME visibility state. Superseded by independently rerun case; not a product verdict."
+    },
+    {
+      "id": "D-L06",
+      "status": "ERROR",
+      "actual": {
+        "error": "Mobile project did not open: ['At a glance', 'Sun, Oct 18', 'Play Store', 'Gmail', 'Photos', 'YouTube', 'Home', 'Phone', 'Messages', 'Chrome', 'Expo Go', 'Google search', 'Google app', 'Voice search', 'Google Lens']"
+      },
+      "startedAt": "2026-10-18T04:50:57.795828+00:00",
+      "finishedAt": "2026-10-18T04:51:51.191820+00:00",
+      "reason": "Automation project launch / stale IME visibility state. Superseded by independently rerun case; not a product verdict."
+    },
+    {
+      "id": "D-L08",
+      "status": "ERROR",
+      "actual": {
+        "error": "Mobile project did not open: ['At a glance', 'Sun, Oct 18', 'Play Store', 'Gmail', 'Photos', 'YouTube', 'Home', 'Phone', 'Messages', 'Chrome', 'Expo Go', 'Google search', 'Google app', 'Voice search', 'Google Lens']"
+      },
+      "startedAt": "2026-10-18T04:52:22.778263+00:00",
+      "finishedAt": "2026-10-18T04:53:17.744070+00:00",
+      "reason": "Automation project launch / stale IME visibility state. Superseded by independently rerun case; not a product verdict."
+    },
+    {
+      "id": "D-C02",
+      "status": "ERROR",
+      "actual": {
+        "error": "Mobile project did not open: ['At a glance', 'Sun, Oct 18', 'Play Store', 'Gmail', 'Photos', 'YouTube', 'Home', 'Phone', 'Messages', 'Chrome', 'Expo Go', 'Google search', 'Google app', 'Voice search', 'Google Lens']"
+      },
+      "startedAt": "2026-10-18T04:54:04.246399+00:00",
+      "finishedAt": "2026-10-18T04:54:57.825931+00:00",
+      "reason": "Automation project launch / stale IME visibility state. Superseded by independently rerun case; not a product verdict."
+    },
+    {
+      "id": "D-C03",
+      "status": "FAIL",
+      "actual": {
+        "originalTotal": "30000000",
+        "sameTotalAfterTyping": false,
+        "targetEnabled": "false",
+        "targetFocusable": "true"
+      },
+      "startedAt": "2026-10-18T04:54:57.828946+00:00",
+      "finishedAt": "2026-10-18T04:55:40.729279+00:00",
+      "reason": "Automation project launch / stale IME visibility state. Superseded by independently rerun case; not a product verdict."
+    },
+    {
+      "id": "D-C05",
+      "status": "ERROR",
+      "actual": {
+        "error": "Mobile project did not open: ['At a glance', 'Sun, Oct 18', 'Play Store', 'Gmail', 'Photos', 'YouTube', 'Home', 'Phone', 'Messages', 'Chrome', 'Expo Go', 'Google search', 'Google app', 'Voice search', 'Google Lens']"
+      },
+      "startedAt": "2026-10-18T04:56:27.038998+00:00",
+      "finishedAt": "2026-10-18T04:57:20.707155+00:00",
+      "reason": "Automation project launch / stale IME visibility state. Superseded by independently rerun case; not a product verdict."
+    },
+    {
+      "id": "D-C07",
+      "status": "ERROR",
+      "actual": {
+        "error": "Mobile project did not open: ['At a glance', 'Sun, Oct 18', 'Play Store', 'Gmail', 'Photos', 'YouTube', 'Home', 'Phone', 'Messages', 'Chrome', 'Expo Go', 'Google search', 'Google app', 'Voice search', 'Google Lens']"
+      },
+      "startedAt": "2026-10-18T04:57:50.130033+00:00",
+      "finishedAt": "2026-10-18T04:58:45.083236+00:00",
+      "reason": "Automation project launch / stale IME visibility state. Superseded by independently rerun case; not a product verdict."
+    }
+  ],
+  "reruns": [
+    {
+      "startedAt": "2026-10-18T04:59:51.655680+00:00",
+      "caseIds": [
+        "D-L04",
+        "D-L06",
+        "D-L08",
+        "D-C02",
+        "D-C03",
+        "D-C05",
+        "D-C07"
+      ],
+      "reason": "Corrected emulator project launch synchronization; rerun independent cases"
+    }
+  ]
+}

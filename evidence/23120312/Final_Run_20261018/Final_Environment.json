@@ -1,0 +1,43 @@
+{
+  "capturedAt": "2026-10-18T05:00:26.979864+00:00",
+  "sourceRevision": "85af3ba875c88283615e22cb108f13e2fccaf0e9",
+  "sourceHashes": {
+    "backend/server.js": "47573ce5a6bf9a894748d2bb56cc8d1659ad7acd033fdd6db6b3e4d9473eb487",
+    "backend/database.js": "3366420632bb9c982905b22e3969f69515e39e7a37a4f84eba56ead7e94afed8",
+    "backend/package.json": "2e536b8fc5009439e9235cf5867ea7a35b8a6e867a94b6738db6938f8d3ebd88",
+    "backend/package-lock.json": "ec3f3b2dbf1622f1b1121b9d5916ab0eb74d06ed8c59b16082c52c452eebd814",
+    "frontend-mobile/App.js": "0fc50e37746248bc4baebd3452f93f9572ce9ecd450f53df6f0c1ff567443ea6",
+    "frontend-mobile/index.js": "5c157f4d44972d9c84415e1e4bda595b3abcd8cf733f8a9cd20935bec3eccc42",
+    "frontend-mobile/app.json": "9f86cf38dc6ae84fc72fd8f7a237a7e74efe5129588d5a9b9927e7775a61ea1c",
+    "frontend-mobile/package.json": "a21692637c65ece46b9221f86dc707fd2075de25a7d2679cbae8ec41fd9d3cc7",
+    "frontend-mobile/package-lock.json": "f269e80c1b614399fc480ff4560cfdfdf89aa56a5b47c4198ce703ee6aab7d6e"
+  },
+  "android": {
+    "ro.build.version.release": "16",
+    "ro.build.version.sdk": "36",
+    "ro.product.model": "sdk_gphone64_x86_64",
+    "ro.product.cpu.abi": "x86_64"
+  },
+  "emulator": "36.1.9 (existing SDK, WHPX, headless)",
+  "expoGo": "54.0.8",
+  "mobileSource": "React Native application in Android Expo Go; no Expo Web",
+  "adaptations": [
+    "Backend port 38316 and loopback binding only",
+    "Web/Admin API host points to 38317 passive recorder",
+    "Mobile API_URL points to Android host 10.0.2.2:38317",
+    "All source business logic left unchanged",
+    "D-C04 explicitly changes exactly one HTTP checkout total to 1; default recorder is transparent"
+  ],
+  "protectedDatabaseHashes": {
+    "eshop-sut": {
+      "before": "c63f00544180ba1fbb1427a9b9dd3f1784842698809972f33ce90482e7420ba6",
+      "after": "c63f00544180ba1fbb1427a9b9dd3f1784842698809972f33ce90482e7420ba6"
+    },
+    "eshop-sandbox-23120312": {
+      "before": "7a12bb17e35b42b1743aff3b3dbb87377171b3ed7a3008b0dfef17d77f1680ec",
+      "after": "7a12bb17e35b42b1743aff3b3dbb87377171b3ed7a3008b0dfef17d77f1680ec"
+    }
+  },
+  "protectedDatabasesUnchanged": true,
+  "fixtureIsolation": "Disposable users/admins/products in new local backend database; original backend was not started"
+}

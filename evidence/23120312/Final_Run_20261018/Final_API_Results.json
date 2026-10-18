@@ -1,0 +1,483 @@
+{
+  "sourceRevision": "85af3ba875c88283615e22cb108f13e2fccaf0e9",
+  "timestamp": "2026-10-18T04:41:01.426Z",
+  "fixtureStrategy": "Fresh accounts per case; actual wall-clock probes at 29/30/31 seconds; disposable SQLite only",
+  "results": [
+    {
+      "id": "A02-01",
+      "expected": "200 with JWT",
+      "actual": {
+        "http": 200,
+        "hasJwt": true
+      },
+      "status": "PASS",
+      "note": "",
+      "timestamp": "2026-10-18T04:40:29.822Z"
+    },
+    {
+      "id": "A02-02",
+      "expected": "401 without JWT",
+      "actual": {
+        "http": 401,
+        "hasJwt": false
+      },
+      "status": "PASS",
+      "note": "",
+      "timestamp": "2026-10-18T04:40:29.827Z"
+    },
+    {
+      "id": "A02-03",
+      "expected": "Counter 1 after first failure",
+      "actual": {
+        "id": 40,
+        "login_attempts": 2,
+        "locked_until": null
+      },
+      "status": "FAIL",
+      "note": "",
+      "timestamp": "2026-10-18T04:40:29.854Z"
+    },
+    {
+      "id": "A02-04",
+      "expected": "Counter 2; correct password succeeds",
+      "actual": {
+        "id": 41,
+        "login_attempts": 2,
+        "locked_until": null,
+        "correctHttp": 403
+      },
+      "status": "FAIL",
+      "note": "",
+      "timestamp": "2026-10-18T04:40:29.903Z"
+    },
+    {
+      "id": "A02-05",
+      "expected": "Counter 3 and locked at threshold",
+      "actual": {
+        "id": 42,
+        "login_attempts": 4,
+        "locked_until": "2026-10-18T04:43:29.949Z",
+        "wrongHttp": [
+          401,
+          401,
+          403
+        ],
+        "correctHttp": 403
+      },
+      "status": "FAIL",
+      "note": "",
+      "timestamp": "2026-10-18T04:40:29.969Z"
+    },
+    {
+      "id": "A02-06",
+      "expected": "About 30 seconds",
+      "actual": {
+        "remainingSeconds": 179.97
+      },
+      "status": "FAIL",
+      "note": "",
+      "timestamp": "2026-10-18T04:40:30.041Z"
+    },
+    {
+      "id": "A02-07",
+      "expected": "Success resets counter",
+      "actual": {
+        "http": 200,
+        "id": 44,
+        "login_attempts": 0,
+        "locked_until": null
+      },
+      "status": "PASS",
+      "note": "",
+      "timestamp": "2026-10-18T04:40:30.103Z"
+    },
+    {
+      "id": "A02-13",
+      "expected": "Correct login rejected before 30s",
+      "actual": {
+        "elapsedSeconds": 29.069,
+        "http": 403
+      },
+      "status": "PASS",
+      "note": "",
+      "timestamp": "2026-10-18T04:40:59.235Z"
+    },
+    {
+      "id": "A02-14",
+      "expected": "Correct login accepted from 30s",
+      "actual": {
+        "elapsedSeconds": 30.064,
+        "http": 403
+      },
+      "status": "FAIL",
+      "note": "",
+      "timestamp": "2026-10-18T04:41:00.309Z"
+    },
+    {
+      "id": "A02-15",
+      "expected": "Correct login accepted from 30s",
+      "actual": {
+        "elapsedSeconds": 31.064,
+        "http": 403
+      },
+      "status": "FAIL",
+      "note": "",
+      "timestamp": "2026-10-18T04:41:01.388Z"
+    },
+    {
+      "id": "A02-16",
+      "expected": "Other account unaffected",
+      "actual": {
+        "http": 200
+      },
+      "status": "PASS",
+      "note": "",
+      "timestamp": "2026-10-18T04:40:30.484Z"
+    },
+    {
+      "id": "A02-17",
+      "expected": "Generic non-enumerating failure",
+      "actual": {
+        "existingHttp": 401,
+        "absentHttp": 401,
+        "sameError": true,
+        "error": "Invalid email or password"
+      },
+      "status": "PASS",
+      "note": "",
+      "timestamp": "2026-10-18T04:40:30.504Z"
+    },
+    {
+      "id": "A02-20",
+      "expected": "JWT without password field",
+      "actual": {
+        "http": 200,
+        "hasJwt": true,
+        "passwordFieldExposed": true,
+        "passwordValue": "[redacted test credential]"
+      },
+      "status": "FAIL",
+      "note": "",
+      "timestamp": "2026-10-18T04:40:30.524Z"
+    },
+    {
+      "id": "B08-01",
+      "expected": "Reject unauthorized checkout",
+      "actual": {
+        "http": 401
+      },
+      "status": "PASS",
+      "note": "",
+      "timestamp": "2026-10-18T04:40:30.530Z"
+    },
+    {
+      "id": "B08-02",
+      "expected": "Reject unauthorized checkout",
+      "actual": {
+        "http": 403
+      },
+      "status": "PASS",
+      "note": "",
+      "timestamp": "2026-10-18T04:40:30.532Z"
+    },
+    {
+      "id": "B08-03",
+      "expected": "Reject forged total or recompute cart T=200000",
+      "actual": {
+        "sentTotal": 200000,
+        "http": 200,
+        "order": {
+          "total_amount": 200000,
+          "status": "pending"
+        }
+      },
+      "status": "PASS",
+      "note": "",
+      "timestamp": "2026-10-18T04:40:30.564Z"
+    },
+    {
+      "id": "B08-04",
+      "expected": "Reject forged total or recompute cart T=200000",
+      "actual": {
+        "sentTotal": 1,
+        "http": 200,
+        "order": {
+          "total_amount": 1,
+          "status": "pending"
+        }
+      },
+      "status": "FAIL",
+      "note": "",
+      "timestamp": "2026-10-18T04:40:30.588Z"
+    },
+    {
+      "id": "B08-05",
+      "expected": "Reject forged total or recompute cart T=200000",
+      "actual": {
+        "sentTotal": -1,
+        "http": 200,
+        "order": {
+          "total_amount": -1,
+          "status": "pending"
+        }
+      },
+      "status": "FAIL",
+      "note": "",
+      "timestamp": "2026-10-18T04:40:30.605Z"
+    },
+    {
+      "id": "B08-06",
+      "expected": "Cart empty after checkout",
+      "actual": {
+        "http": 200,
+        "remainingItems": 1
+      },
+      "status": "FAIL",
+      "note": "",
+      "timestamp": "2026-10-18T04:40:30.710Z"
+    },
+    {
+      "id": "B08-07",
+      "expected": "SRS has no explicit empty-cart oracle",
+      "actual": {
+        "http": 200,
+        "createdOrder": true
+      },
+      "status": "OBSERVATION",
+      "note": "Exploratory; not counted as a bug",
+      "timestamp": "2026-10-18T04:40:30.722Z"
+    },
+    {
+      "id": "B08-10",
+      "expected": "Reject forged total or recompute cart T=200000",
+      "actual": {
+        "sentTotal": 0,
+        "http": 200,
+        "order": {
+          "total_amount": 0,
+          "status": "pending"
+        }
+      },
+      "status": "FAIL",
+      "note": "",
+      "timestamp": "2026-10-18T04:40:30.636Z"
+    },
+    {
+      "id": "B08-11",
+      "expected": "Reject forged total or recompute cart T=200000",
+      "actual": {
+        "sentTotal": 199999,
+        "http": 200,
+        "order": {
+          "total_amount": 199999,
+          "status": "pending"
+        }
+      },
+      "status": "FAIL",
+      "note": "",
+      "timestamp": "2026-10-18T04:40:30.658Z"
+    },
+    {
+      "id": "B08-12",
+      "expected": "Reject forged total or recompute cart T=200000",
+      "actual": {
+        "sentTotal": 200001,
+        "http": 200,
+        "order": {
+          "total_amount": 200001,
+          "status": "pending"
+        }
+      },
+      "status": "FAIL",
+      "note": "",
+      "timestamp": "2026-10-18T04:40:30.672Z"
+    },
+    {
+      "id": "B08-13",
+      "expected": "Use authenticated owner cart T=200000",
+      "actual": {
+        "http": 200,
+        "order": {
+          "user_id": 61,
+          "total_amount": 1000000
+        }
+      },
+      "status": "FAIL",
+      "note": "",
+      "timestamp": "2026-10-18T04:40:30.752Z"
+    },
+    {
+      "id": "B08-16",
+      "expected": "Reject forged total or recompute cart T=200000",
+      "actual": {
+        "sentTotal": 987654,
+        "http": 200,
+        "order": {
+          "total_amount": 987654,
+          "status": "pending"
+        }
+      },
+      "status": "FAIL",
+      "note": "",
+      "timestamp": "2026-10-18T04:40:30.692Z"
+    },
+    {
+      "id": "B08-20",
+      "expected": "Own history contains pending order and correct total",
+      "actual": {
+        "http": 200,
+        "order": {
+          "id": 22,
+          "user_id": 63,
+          "total_amount": 200000,
+          "status": "pending",
+          "shipping_address": null,
+          "created_at": "2026-10-18 04:40:30"
+        }
+      },
+      "status": "PASS",
+      "note": "",
+      "timestamp": "2026-10-18T04:40:30.788Z"
+    },
+    {
+      "id": "C19-01",
+      "expected": "Reject missing/invalid token",
+      "actual": {
+        "http": 401
+      },
+      "status": "PASS",
+      "note": "",
+      "timestamp": "2026-10-18T04:40:30.789Z"
+    },
+    {
+      "id": "C19-02",
+      "expected": "Reject missing/invalid token",
+      "actual": {
+        "http": 403
+      },
+      "status": "PASS",
+      "note": "",
+      "timestamp": "2026-10-18T04:40:30.791Z"
+    },
+    {
+      "id": "C19-03",
+      "expected": "Admin list without password",
+      "actual": {
+        "http": 200,
+        "userCount": 60,
+        "passwordExposed": false
+      },
+      "status": "PASS",
+      "note": "",
+      "timestamp": "2026-10-18T04:40:30.804Z"
+    },
+    {
+      "id": "C19-04",
+      "expected": "Regular user receives 403",
+      "actual": {
+        "http": 200,
+        "usersExposed": true
+      },
+      "status": "FAIL",
+      "note": "",
+      "timestamp": "2026-10-18T04:40:30.814Z"
+    },
+    {
+      "id": "C19-05",
+      "expected": "403 and target remains",
+      "actual": {
+        "http": 200,
+        "targetExists": false
+      },
+      "status": "FAIL",
+      "note": "",
+      "timestamp": "2026-10-18T04:40:30.863Z"
+    },
+    {
+      "id": "C19-06",
+      "expected": "Admin deletes selected other user",
+      "actual": {
+        "http": 200,
+        "targetExists": false
+      },
+      "status": "PASS",
+      "note": "",
+      "timestamp": "2026-10-18T04:40:30.905Z"
+    },
+    {
+      "id": "C19-07",
+      "expected": "Refuse self deletion",
+      "actual": {
+        "http": 200,
+        "ownAccountExists": false
+      },
+      "status": "FAIL",
+      "note": "",
+      "timestamp": "2026-10-18T04:40:30.922Z"
+    },
+    {
+      "id": "C19-08",
+      "expected": "No other record deleted for nonexistent ID",
+      "actual": {
+        "target": 0,
+        "http": 200,
+        "before": 64,
+        "after": 64
+      },
+      "status": "PASS",
+      "note": "HTTP behavior is exploratory; no specific status required",
+      "timestamp": "2026-10-18T04:40:30.962Z"
+    },
+    {
+      "id": "C19-09",
+      "expected": "Refuse self deletion",
+      "actual": {
+        "http": 200,
+        "ownAccountExists": false
+      },
+      "status": "FAIL",
+      "note": "",
+      "timestamp": "2026-10-18T04:40:30.940Z"
+    },
+    {
+      "id": "C19-10",
+      "expected": "No other record deleted for nonexistent ID",
+      "actual": {
+        "target": 74,
+        "http": 200,
+        "before": 65,
+        "after": 65
+      },
+      "status": "PASS",
+      "note": "HTTP behavior is exploratory; no specific status required",
+      "timestamp": "2026-10-18T04:40:30.986Z"
+    },
+    {
+      "id": "C19-14",
+      "expected": "403 for altered signature",
+      "actual": {
+        "http": 403
+      },
+      "status": "PASS",
+      "note": "",
+      "timestamp": "2026-10-18T04:40:30.995Z"
+    },
+    {
+      "id": "C19-15",
+      "expected": "Deleted target absent from subsequent admin list; all others preserved",
+      "actual": {
+        "http": 200,
+        "beforeCount": 82,
+        "afterCount": 81,
+        "removedIds": [
+          91
+        ],
+        "addedIds": [],
+        "targetId": 91
+      },
+      "status": "PASS",
+      "timestamp": "2026-10-18T04:55:41Z",
+      "note": "Fresh independent fixtures; comparison derived from actual GET responses"
+    }
+  ]
+}
